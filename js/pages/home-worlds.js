@@ -6,6 +6,7 @@ export function initializeHomeWorlds() {
   const sections = [...page.querySelectorAll("[data-home-section]")];
   const progressBar = page.querySelector("[data-home-progress-bar]");
   const progressNumber = page.querySelector("[data-home-progress-number]");
+  const hero = page.querySelector('[data-home-section="0"]');
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   let frame = null;
@@ -38,6 +39,15 @@ export function initializeHomeWorlds() {
     page.style.setProperty("--nebula-shift", `${progress * -5}rem`);
     page.style.setProperty("--nebula-scale", String(1 + progress * .08));
     if (progressBar) progressBar.style.transform = `scaleY(${progress})`;
+
+    if (hero) {
+      const start = hero.offsetTop + hero.offsetHeight * .58;
+      const distance = Math.max(window.innerHeight * .72, 1);
+      const portalProgress = Math.min(Math.max((window.scrollY - start) / distance, 0), 1);
+      const portalIntensity = Math.sin(portalProgress * Math.PI);
+      page.style.setProperty("--portal-progress", portalProgress.toFixed(4));
+      page.style.setProperty("--portal-intensity", portalIntensity.toFixed(4));
+    }
 
     sections.forEach((section, index) => {
       const rect = section.getBoundingClientRect();
