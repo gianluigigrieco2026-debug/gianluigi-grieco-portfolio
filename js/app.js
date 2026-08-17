@@ -289,7 +289,7 @@ function handleRouteChange(route) {
     initializeScrollReveals();
 
   const pageTitles = {
-    home: "Gianluigi Grieco — Graphic Designer e Fotografo",
+    home: "Gianluigi Grieco — Graphic Designer, Fotografo e Shopify Partner",
     work: "Lavori — Gianluigi Grieco",
     about: "Chi sono — Gianluigi Grieco",
     contact: "Contatti — Gianluigi Grieco",

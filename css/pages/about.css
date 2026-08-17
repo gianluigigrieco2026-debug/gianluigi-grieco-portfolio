@@ -275,9 +275,18 @@
   .about-hero__topline { align-items: flex-start; }
   .about-hero__topline p:last-child { max-width: 10rem; text-align: right; }
   .about-hero__main { grid-template-columns: 1fr; padding-block: 4rem 2.5rem; }
-  .about-hero__title { font-size: clamp(4rem, 19vw, 7rem); }
+  .about-hero__title {
+    max-width: 100%;
+    font-size: clamp(3.55rem, 16.5vw, 5.8rem);
+    line-height: .8;
+  }
   .about-hero__copy > p { margin-top: 1.6rem; }
-  .about-portrait { width: min(76vw, 21rem); justify-self: center; }
+  .about-portrait {
+    width: min(100%, 21rem);
+    margin: 0;
+    justify-self: start;
+  }
+  .about-portrait figcaption { justify-content: flex-start; }
   .about-hero__bottom > p { display: none; }
   .about-hero__bottom { justify-content: flex-end; }
   .about-section-heading { grid-template-columns: 1fr; gap: 2rem; }
@@ -285,7 +294,7 @@
   .about-disciplines { margin-top: 4rem; }
   .about-discipline { grid-template-columns: 2.25rem minmax(0, 1fr) 1rem; min-height: 8.5rem; gap: .65rem; }
   .about-discipline > p { grid-column: 2 / -1; margin-top: -2rem; padding-bottom: 1rem; }
-  .about-discipline h3 { font-size: clamp(2rem, 10vw, 3.6rem); }
+  .about-discipline h3 { font-size: clamp(2rem, 9.2vw, 3.35rem); }
   .about-process { grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: 4rem; }
   .about-step { min-height: 10rem; }
   .about-closing { grid-template-columns: 1fr; }
@@ -316,8 +325,10 @@
 
 .about-disciplines {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: clamp(1rem, 1.7vw, 1.75rem);
+  max-width: 90rem;
+  margin-inline: auto;
   margin-top: clamp(3rem, 6vw, 6rem);
   border: 0;
 }
@@ -370,14 +381,15 @@
 .about-discipline:hover .about-discipline__body p { color: rgba(23,16,33,.62); }
 .about-discipline:hover .about-discipline__mark { color: #171021; transform: rotate(45deg); }
 .about-discipline:hover .about-discipline__glow { opacity: .7; transform: scale(1.35); }
-.about-discipline--2 { margin-top: clamp(2rem, 5vw, 5rem); }
-.about-discipline--3 { margin-top: clamp(4rem, 10vw, 10rem); }
+.about-discipline--2,
+.about-discipline--4 { margin-top: clamp(2rem, 5vw, 5rem); }
 
 @media (max-width: 900px) {
   .about-disciplines { grid-template-columns: 1fr; max-width: 50rem; margin-inline: auto; }
   .about-discipline { min-height: 20rem; }
   .about-discipline--2,
-  .about-discipline--3 { margin-top: 0; }
+  .about-discipline--3,
+  .about-discipline--4 { margin-top: 0; }
 }
 
 @media (max-width: 680px) {
@@ -399,7 +411,7 @@
 
 .about-portrait__image {
   position: relative;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 1;
   overflow: hidden;
   border-radius: clamp(1.2rem, 2vw, 2rem);
   background: #20172b;
@@ -410,9 +422,9 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 52% 45%;
-  filter: saturate(.82) contrast(1.06);
-  transform: scale(1.02);
+  object-position: center;
+  filter: none;
+  transform: scale(1.001);
   transition: transform 1.1s var(--ease-primary), filter .8s ease;
 }
 
@@ -423,7 +435,7 @@
   background: linear-gradient(180deg, transparent 58%, rgba(27,12,39,.28)), radial-gradient(circle at 20% 12%, rgba(255,255,255,.13), transparent 25%);
 }
 
-.about-portrait:hover .about-portrait__image img { transform: scale(1.065); filter: saturate(.95) contrast(1.03); }
+.about-portrait:hover .about-portrait__image img { transform: scale(1.025); filter: none; }
 
 .about-portrait figcaption {
   display: flex;
@@ -586,14 +598,19 @@
   }
 
   .about-hero__main { grid-template-columns: 1fr; }
-  .about-portrait { width: min(88vw, 26rem); justify-self: end; }
+  .about-portrait {
+    width: min(100%, 21rem);
+    margin: 0;
+    justify-self: start;
+  }
+  .about-portrait figcaption { justify-content: flex-start; }
   .about-method { padding-block: clamp(6rem, 20vw, 8rem); }
   .about-method__layout { gap: 3rem; }
   .about-method__sticky h2 {
     max-width: 100%;
-    font-size: clamp(2.9rem, 12vw, 4rem);
-    line-height: .86;
-    overflow-wrap: anywhere;
+    font-size: clamp(2.65rem, 10.5vw, 3.7rem);
+    line-height: .9;
+    overflow-wrap: normal;
   }
   .about-method__intro {
     margin-top: 1.5rem;
@@ -611,9 +628,9 @@
   .about-step__content { max-width: 100%; }
   .about-step__content h3 {
     max-width: 100%;
-    font-size: clamp(2.45rem, 11.5vw, 3.5rem);
-    line-height: .88;
-    overflow-wrap: anywhere;
+    font-size: clamp(2.3rem, 10.2vw, 3.25rem);
+    line-height: .9;
+    overflow-wrap: normal;
   }
   .about-step__content p {
     margin-top: 1.25rem;
@@ -637,3 +654,38 @@
 }
 .about-discipline__glow { background: #ff3434; }
 .about-discipline:hover { background: var(--palette-about, #ff0000); }
+
+/* Final portrait and typography treatment. */
+.about-portrait__image {
+  border: 1px solid rgba(255,0,0,.22);
+  background: #ff0000;
+  box-shadow: 0 0 2.5rem rgba(255,0,0,.13), 0 2.5rem 6rem rgba(78,0,10,.17);
+}
+
+.about-hero__title,
+.about-section-heading h2,
+.about-discipline h3,
+.about-method__sticky h2,
+.about-step__content h3,
+.about-closing__statement {
+  font-weight: 500;
+  letter-spacing: -.03em;
+}
+
+.about-hero__title em { font-weight: 400; }
+
+.about-hero__copy > p,
+.about-discipline .about-discipline__body p,
+.about-method__intro,
+.about-step__content p,
+.about-closing a {
+  font-weight: 500;
+  letter-spacing: -.01em;
+}
+
+.about-hero__topline,
+.about-hero__bottom,
+.about-practice__topline,
+.about-discipline__number,
+.about-step__top,
+.about-portrait figcaption { font-weight: 500; }

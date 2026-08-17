@@ -1,14 +1,9 @@
 import { siteData } from "../data/site.js";
 import { projects } from "../data/projects.js";
+import { createArrowIcon } from "../utils/icons.js";
 
-const disciplines = ["Brand identity", "Graphic design", "Fotografia"];
+const disciplines = ["Brand identity", "Graphic design", "Fotografia", "Shopify Partner"];
 const featuredProjects = projects.filter((project) => project.featured).slice(0, 8);
-
-function createTunnelRings() {
-  return Array.from({ length: 11 }, (_, index) =>
-    `<span class="home-dimension-gate__ring" data-tunnel-ring style="--ring-index:${index}"></span>`
-  ).join("");
-}
 
 function escapeHTML(value) {
   return String(value ?? "")
@@ -27,6 +22,7 @@ function createProjectSet(duplicate = false) {
           class="home-work-card"
           href="#project/${encodeURIComponent(project.slug)}"
           aria-label="Apri il progetto ${escapeHTML(project.title)}"
+          data-cover-ratio="${escapeHTML(project.coverRatio || "landscape")}"
           ${duplicate ? 'tabindex="-1"' : ""}
         >
           <img src="${escapeHTML(project.cover)}" alt="" loading="${index < 3 && !duplicate ? "eager" : "lazy"}">
@@ -35,7 +31,7 @@ function createProjectSet(duplicate = false) {
             <small>${escapeHTML(project.category)}</small>
             <strong>${escapeHTML(project.title)}</strong>
           </span>
-          <i aria-hidden="true">↗︎</i>
+          <i aria-hidden="true">${createArrowIcon("north-east")}</i>
         </a>
       `).join("")}
     </div>`;
@@ -78,25 +74,12 @@ export function createHomePage() {
             </div>
           </div>
 
-          <a class="home-scroll-cue" href="#home-transition" aria-label="Scorri per attraversare il varco creativo">
-            <span>Scorri per attraversare</span><i aria-hidden="true">↓︎</i>
+          <a class="home-scroll-cue" href="#home-transition" aria-label="Scorri per continuare nello spazio">
+            <span>Scorri nello spazio</span><i aria-hidden="true">${createArrowIcon("south")}</i>
           </a>
         </section>
 
-        <section class="home-dimension-gate" id="home-transition" data-home-portal aria-label="Transizione verso la sezione Chi sono">
-          <div class="home-dimension-gate__sticky" aria-hidden="true">
-            <div class="home-dimension-gate__field"></div>
-            <div class="home-dimension-gate__rays"></div>
-            <div class="home-dimension-gate__rings">
-              ${createTunnelRings()}
-            </div>
-            <div class="home-dimension-gate__core"></div>
-            <p class="home-dimension-gate__copy">
-              <span>Varco creativo / 01</span>
-              <strong>Dove l’idea cambia dimensione.</strong>
-            </p>
-          </div>
-        </section>
+        <section class="home-space-flight" id="home-transition" data-home-flight aria-hidden="true"></section>
 
         <section class="home-section home-about container" id="home-about" data-home-section="1">
           <div class="home-glass home-about__panel" data-glass-panel>
@@ -117,7 +100,7 @@ export function createHomePage() {
               </div>
             </div>
 
-            <a class="home-about__cta" href="#about"><span>Scopri profilo e metodo</span><i aria-hidden="true">↗︎</i></a>
+            <a class="home-about__cta" href="#about"><span>Scopri profilo e metodo</span><i aria-hidden="true">${createArrowIcon("north-east")}</i></a>
           </div>
         </section>
 
@@ -142,7 +125,7 @@ export function createHomePage() {
               </div>
             </div>
 
-            <a class="home-work__cta" href="#work"><span>Vedi tutti i lavori</span><i aria-hidden="true">↗︎</i></a>
+            <a class="home-work__cta" href="#work"><span>Vedi tutti i lavori</span><i aria-hidden="true">${createArrowIcon("north-east")}</i></a>
           </div>
         </section>
 
@@ -162,7 +145,7 @@ export function createHomePage() {
 
             <a class="home-contact__cta" href="#contact">
               <span>Inizia una conversazione</span>
-              <i aria-hidden="true">↗︎</i>
+              <i aria-hidden="true">${createArrowIcon("north-east")}</i>
             </a>
 
             <footer class="home-contact__footer">

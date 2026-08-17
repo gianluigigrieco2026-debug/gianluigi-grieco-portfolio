@@ -1,4 +1,5 @@
 import { siteData } from "../data/site.js";
+import { createArrowIcon } from "../utils/icons.js";
 
 
 function createServiceList() {
@@ -31,7 +32,7 @@ function createContactAction({ label, value, href, external = false }) {
         class="contact-action__arrow"
         aria-hidden="true"
       >
-        ↗
+        ${createArrowIcon("north-east")}
       </span>
     </a>
   `;
@@ -127,7 +128,7 @@ export function createContactPage() {
                 rel="noopener noreferrer"
               >
                 Instagram
-                <span aria-hidden="true">↗</span>
+                <span aria-hidden="true">${createArrowIcon("north-east")}</span>
               </a>
             </div>
 
@@ -136,7 +137,7 @@ export function createContactPage() {
 
           <div class="contact-bottom">
             <p>${siteData.copyright}</p>
-            <a href="#home">Torna alla home ↑</a>
+            <a href="#home">Torna alla home ${createArrowIcon("north")}</a>
           </div>
 
         </div>

@@ -187,7 +187,7 @@ export const projects = [
     featured: true,
     thumbnail: "assets/images/projects/graphic-design/void/cover.jpg",
     cover: "assets/images/projects/graphic-design/void/cover.jpg",
-    coverRatio: "landscape",
+    coverRatio: "portrait",
     gallery: [
       "assets/images/projects/graphic-design/void/cover.jpg"
     ],
@@ -211,7 +211,7 @@ export const projects = [
     featured: true,
     thumbnail: "assets/images/projects/graphic-design/rodeo/cover.webp",
     cover: "assets/images/projects/graphic-design/rodeo/cover.webp",
-    coverRatio: "landscape",
+    coverRatio: "portrait",
     gallery: [
       "assets/images/projects/graphic-design/rodeo/cover.webp",
       "assets/images/projects/graphic-design/rodeo/01.webp",
@@ -238,7 +238,7 @@ export const projects = [
     featured: true,
     thumbnail: "assets/images/projects/graphic-design/torneo-serre/cover.webp",
     cover: "assets/images/projects/graphic-design/torneo-serre/cover.webp",
-    coverRatio: "landscape",
+    coverRatio: "portrait",
     gallery: [
       "assets/images/projects/graphic-design/torneo-serre/cover.webp",
       "assets/images/projects/graphic-design/torneo-serre/01.webp",
@@ -283,7 +283,7 @@ export const projects = [
     featured: true,
     thumbnail: "assets/images/projects/graphic-design/summer-escape/cover.webp",
     cover: "assets/images/projects/graphic-design/summer-escape/cover.webp",
-    coverRatio: "landscape",
+    coverRatio: "portrait",
     gallery: [
       "assets/images/projects/graphic-design/summer-escape/cover.webp"
     ],

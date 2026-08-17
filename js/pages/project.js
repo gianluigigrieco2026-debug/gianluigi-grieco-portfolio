@@ -1,4 +1,5 @@
 import { projects } from "../data/projects.js";
+import { createArrowIcon } from "../utils/icons.js";
 
 const CATEGORY_LABELS = {
   "Brand Identity": "Brand Identity",
@@ -169,7 +170,7 @@ function createPdfLinkMarkup(project) {
         >
           <span class="project-overview__document-type">PDF</span>
           <span>Apri il brand book</span>
-          <span class="project-overview__document-icon" aria-hidden="true">↗</span>
+          <span class="project-overview__document-icon" aria-hidden="true">${createArrowIcon("north-east")}</span>
         </a>
       </dd>
     </div>
@@ -193,7 +194,7 @@ function createNextProjectMarkup(project) {
       >
         <div class="project-next__eyebrow">
           <span>Progetto successivo</span>
-          <span>↗</span>
+          <span>${createArrowIcon("north-east")}</span>
         </div>
 
         <div class="project-next__grid" data-reveal>
@@ -227,7 +228,7 @@ function createNotFoundProjectPage() {
       <section class="project-not-found container">
         <p class="project-not-found__label">Progetto / 404</p>
         <h1 class="project-not-found__title">Progetto non trovato.</h1>
-        <a class="project-not-found__link" href="#work">Torna ai lavori ↗</a>
+        <a class="project-not-found__link" href="#work">Torna ai lavori ${createArrowIcon("north-east")}</a>
       </section>
     </main>
   `;

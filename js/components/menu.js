@@ -1,4 +1,5 @@
 import { siteData } from "../data/site.js";
+import { createArrowIcon } from "../utils/icons.js";
 
 
 function createNavigationLinks(activePage) {
@@ -51,7 +52,7 @@ function createNavigationLinks(activePage) {
             class="menu-overlay__link-arrow"
             aria-hidden="true"
           >
-            ↗
+            ${createArrowIcon("north-east")}
           </span>
         </a>
       `;

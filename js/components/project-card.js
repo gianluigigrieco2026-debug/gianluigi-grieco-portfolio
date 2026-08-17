@@ -1,3 +1,5 @@
+import { createArrowIcon } from "../utils/icons.js";
+
 function escapeHTML(value) {
   return String(value ?? "")
     .replaceAll("&", "&amp;")
@@ -41,7 +43,7 @@ export function createProjectCard(
 
           <span class="project-card__view" aria-hidden="true">
             Vedi progetto
-            <span>↗</span>
+            <span>${createArrowIcon("north-east")}</span>
           </span>
         </div>
 

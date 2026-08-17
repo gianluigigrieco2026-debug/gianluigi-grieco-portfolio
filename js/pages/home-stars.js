@@ -24,7 +24,7 @@ function wrap(value, maximum) {
 export function initializeHomeStars() {
   const canvas = document.querySelector("[data-home-stars]");
   const homePage = document.querySelector(".home-page");
-  const portal = document.querySelector("[data-home-portal]");
+  const flight = document.querySelector("[data-home-flight]");
   if (!canvas || !homePage) return () => {};
 
   const context = canvas.getContext("2d");
@@ -64,21 +64,21 @@ export function initializeHomeStars() {
     stars = Array.from({ length: getStarCount() }, () => createStar(width, height));
   }
 
-  function getPortalState(scrollPosition) {
-    if (!portal || reducedMotion) return { progress: 0, intensity: 0 };
-    const start = portal.offsetTop;
-    const distance = Math.max(portal.offsetHeight - height, 1);
+  function getFlightState(scrollPosition) {
+    if (!flight || reducedMotion) return { progress: 0, intensity: 0 };
+    const start = flight.offsetTop;
+    const distance = Math.max(flight.offsetHeight - height, 1);
     const progress = Math.min(Math.max((scrollPosition - start) / distance, 0), 1);
     const isInside = scrollPosition >= start && scrollPosition <= start + distance;
     return {
       progress,
-      intensity: isInside ? Math.pow(Math.sin(progress * Math.PI), .72) : 0
+      intensity: isInside ? Math.pow(Math.sin(progress * Math.PI), .58) : 0
     };
   }
 
-  function drawStar(star, time, portalProgress = 0, portalIntensity = 0) {
+  function drawStar(star, time, flightProgress = 0, flightIntensity = 0) {
     const journey = currentScroll / Math.max(height, 1);
-    const scale = 1 + journey * (.045 + star.depth * .2) + portalIntensity * (.24 + star.depth * 1.15);
+    const scale = 1 + journey * (.045 + star.depth * .2) + flightIntensity * (.28 + star.depth * 1.35);
     const centerX = width / 2;
     const centerY = height / 2;
     const driftX = Math.sin(time * star.drift + star.phase) * (1 + star.depth * 2.2);
@@ -95,15 +95,15 @@ export function initializeHomeStars() {
     const dx = x - centerX;
     const dy = y - centerY;
     const distance = Math.max(Math.hypot(dx, dy), 1);
-    const streak = Math.min(Math.max(Math.abs(velocity) * (.45 + star.depth * 1.9), portalIntensity * (10 + star.depth * 38)), 48);
+    const streak = Math.min(Math.max(Math.abs(velocity) * (.45 + star.depth * 1.9), flightIntensity * (15 + star.depth * 54)), 62);
 
     if (streak > 1.2 && !reducedMotion) {
       context.beginPath();
       context.moveTo(x, y);
       context.lineTo(x - (dx / distance) * streak, y - (dy / distance) * streak);
-      const redMix = Math.round(227 - portalProgress * 35);
-      const greenMix = Math.round(234 - portalProgress * 98);
-      context.strokeStyle = `rgba(${redMix}, ${greenMix}, 249, ${opacity * (.42 + portalIntensity * .3)})`;
+      const redMix = Math.round(227 - flightProgress * 28);
+      const greenMix = Math.round(234 - flightProgress * 72);
+      context.strokeStyle = `rgba(${redMix}, ${greenMix}, 249, ${opacity * (.42 + flightIntensity * .36)})`;
       context.lineWidth = Math.max(.35, radius * .65);
       context.stroke();
     }
@@ -133,8 +133,8 @@ export function initializeHomeStars() {
     pointerX += (targetPointerX - pointerX) * .045;
     pointerY += (targetPointerY - pointerY) * .045;
     context.clearRect(0, 0, width, height);
-    const portalState = getPortalState(currentScroll);
-    stars.forEach((star) => drawStar(star, time, portalState.progress, portalState.intensity));
+    const flightState = getFlightState(currentScroll);
+    stars.forEach((star) => drawStar(star, time, flightState.progress, flightState.intensity));
     frameId = window.requestAnimationFrame(render);
   }
 

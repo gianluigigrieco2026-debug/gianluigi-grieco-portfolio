@@ -368,7 +368,9 @@ body[data-page="work"]
   }
 
   .work-hero__title {
-    font-size: clamp(4.5rem, 25vw, 7.5rem);
+    max-width: 100%;
+    font-size: clamp(3.8rem, 20.5vw, 6.4rem);
+    line-height: 0.88;
   }
 
   .work-hero__bottom {
@@ -424,6 +426,19 @@ body[data-page="work"]
     margin-top: 0;
   }
 }
+
+/* Final type hierarchy. */
+.work-hero__title {
+  font-weight: 500;
+  letter-spacing: -.03em;
+}
+
+.work-hero__intro,
+.work-filter { font-weight: 500; letter-spacing: -.01em; }
+
+.work-hero__topline,
+.work-hero__count,
+.work-index__label { font-weight: 500; }
 
 
 /* =========================
