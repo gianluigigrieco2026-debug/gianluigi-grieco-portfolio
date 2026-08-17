@@ -1,0 +1,83 @@
+/* ==========================================
+   LARGE DESKTOP
+========================================== */
+
+@media (max-width: 1440px) {
+
+    .container,
+    .container-content {
+        width: min(
+            calc(100% - (var(--page-padding-desktop) * 2)),
+            100%
+        );
+    }
+
+}
+
+
+/* ==========================================
+   TABLET
+========================================== */
+
+@media (max-width: 1024px) {
+
+    .container,
+    .container-content {
+        width: calc(100% - (var(--page-padding-tablet) * 2));
+    }
+
+    .section {
+        padding-block: var(--space-9);
+    }
+
+    .section-large {
+        padding-block: var(--space-10);
+    }
+
+    .grid-4,
+    .grid-3 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 768px) {
+
+    .container,
+    .container-content {
+        width: calc(100% - (var(--page-padding-mobile) * 2));
+    }
+
+    .section,
+    .section-large,
+    .section-small {
+        padding-block: var(--space-8);
+    }
+
+    .grid-2,
+    .grid-3,
+    .grid-4 {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+/* ==========================================
+   SMALL MOBILE
+========================================== */
+
+@media (max-width: 480px) {
+
+    .section,
+    .section-large,
+    .section-small {
+        padding-block: var(--space-7);
+    }
+
+}

@@ -65,10 +65,7 @@ export function initializeHomeStars() {
 
   function drawStar(star, time) {
     const journey = currentScroll / Math.max(height, 1);
-    const portalStart = height * .58;
-    const portalProgress = Math.min(Math.max((currentScroll - portalStart) / Math.max(height * .72, 1), 0), 1);
-    const portalIntensity = reducedMotion ? 0 : Math.sin(portalProgress * Math.PI);
-    const scale = 1 + journey * (.045 + star.depth * .2) + portalIntensity * (.24 + star.depth * 1.15);
+    const scale = 1 + journey * (.045 + star.depth * .2);
     const centerX = width / 2;
     const centerY = height / 2;
     const driftX = Math.sin(time * star.drift + star.phase) * (1 + star.depth * 2.2);
@@ -85,15 +82,13 @@ export function initializeHomeStars() {
     const dx = x - centerX;
     const dy = y - centerY;
     const distance = Math.max(Math.hypot(dx, dy), 1);
-    const streak = Math.min(Math.max(Math.abs(velocity) * (.45 + star.depth * 1.9), portalIntensity * (10 + star.depth * 38)), 48);
+    const streak = Math.min(Math.abs(velocity) * (.45 + star.depth * 1.9), 22);
 
     if (streak > 1.2 && !reducedMotion) {
       context.beginPath();
       context.moveTo(x, y);
       context.lineTo(x - (dx / distance) * streak, y - (dy / distance) * streak);
-      const redMix = Math.round(227 - portalProgress * 35);
-      const greenMix = Math.round(234 - portalProgress * 98);
-      context.strokeStyle = `rgba(${redMix}, ${greenMix}, 249, ${opacity * (.42 + portalIntensity * .3)})`;
+      context.strokeStyle = `rgba(216, 227, 249, ${opacity * .42})`;
       context.lineWidth = Math.max(.35, radius * .65);
       context.stroke();
     }

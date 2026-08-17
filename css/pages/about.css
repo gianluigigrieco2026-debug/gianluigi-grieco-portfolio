@@ -1,7 +1,6 @@
 .about-page {
   color: #171021;
   background: #f3f0ff;
-  overflow-x: hidden;
 }
 
 .about-hero,
@@ -574,52 +573,11 @@
 }
 
 @media (max-width: 680px) {
-  .about-page .container,
-  body[data-page="about"] .navbar.container {
-    width: calc(100% - 1.5rem);
-  }
-
-  .about-practice,
-  .about-method {
-    width: 100%;
-    overflow-x: hidden;
-  }
-
   .about-hero__main { grid-template-columns: 1fr; }
   .about-portrait { width: min(88vw, 26rem); justify-self: end; }
-  .about-method { padding-block: clamp(6rem, 20vw, 8rem); }
-  .about-method__layout { gap: 3rem; }
-  .about-method__sticky h2 {
-    max-width: 100%;
-    font-size: clamp(2.9rem, 12vw, 4rem);
-    line-height: .86;
-    overflow-wrap: anywhere;
-  }
-  .about-method__intro {
-    margin-top: 1.5rem;
-    font-size: .9rem;
-  }
-  .about-process { width: 100%; }
-  .about-step {
-    width: 100%;
-    min-width: 0;
-    min-height: clamp(19rem, 68svh, 23rem);
-    padding: 1.25rem;
-    border-radius: 1.35rem;
-  }
-  .about-step + .about-step { margin-top: 1rem; }
-  .about-step__content { max-width: 100%; }
-  .about-step__content h3 {
-    max-width: 100%;
-    font-size: clamp(2.45rem, 11.5vw, 3.5rem);
-    line-height: .88;
-    overflow-wrap: anywhere;
-  }
-  .about-step__content p {
-    margin-top: 1.25rem;
-    font-size: .86rem;
-    line-height: 1.5;
-  }
+  .about-method__sticky h2 { font-size: clamp(3.4rem, 16vw, 6rem); }
+  .about-step { min-height: 26rem; padding: 1.5rem; }
+  .about-step__content h3 { font-size: clamp(2.8rem, 14vw, 5rem); }
 }
 
 @media (prefers-reduced-motion: reduce) {

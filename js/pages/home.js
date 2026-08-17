@@ -29,7 +29,7 @@ function createProjectSet(duplicate = false) {
             <small>${escapeHTML(project.category)}</small>
             <strong>${escapeHTML(project.title)}</strong>
           </span>
-          <i aria-hidden="true">↗︎</i>
+          <i aria-hidden="true">↗</i>
         </a>
       `).join("")}
     </div>`;
@@ -41,17 +41,6 @@ export function createHomePage() {
       <canvas class="home-stars" data-home-stars aria-hidden="true"></canvas>
       <div class="home-nebula" aria-hidden="true"></div>
       <div class="home-grain" aria-hidden="true"></div>
-
-      <div class="home-dimension-gate" data-dimension-gate aria-hidden="true">
-        <div class="home-dimension-gate__field"></div>
-        <div class="home-dimension-gate__ring home-dimension-gate__ring--outer"></div>
-        <div class="home-dimension-gate__ring home-dimension-gate__ring--inner"></div>
-        <div class="home-dimension-gate__core"></div>
-        <p class="home-dimension-gate__copy">
-          <span>Passaggio / 01</span>
-          <strong>Dall’idea all’identità</strong>
-        </p>
-      </div>
 
       <aside class="home-progress" aria-label="Avanzamento nella Home">
         <span data-home-progress-number>01</span>
@@ -84,7 +73,7 @@ export function createHomePage() {
           </div>
 
           <a class="home-scroll-cue" href="#home-about" aria-label="Scorri alla sezione successiva">
-            <span>Scorri per attraversare</span><i aria-hidden="true">↓︎</i>
+            <span>Entra nello spazio</span><i aria-hidden="true">↓</i>
           </a>
         </section>
 
@@ -107,7 +96,7 @@ export function createHomePage() {
               </div>
             </div>
 
-            <a class="home-about__cta" href="#about"><span>Scopri profilo e metodo</span><i aria-hidden="true">↗︎</i></a>
+            <a class="home-about__cta" href="#about"><span>Scopri profilo e metodo</span><i aria-hidden="true">↗</i></a>
           </div>
         </section>
 
@@ -132,7 +121,7 @@ export function createHomePage() {
               </div>
             </div>
 
-            <a class="home-work__cta" href="#work"><span>Vedi tutti i lavori</span><i aria-hidden="true">↗︎</i></a>
+            <a class="home-work__cta" href="#work"><span>Vedi tutti i lavori</span><i aria-hidden="true">↗</i></a>
           </div>
         </section>
 
@@ -152,7 +141,7 @@ export function createHomePage() {
 
             <a class="home-contact__cta" href="#contact">
               <span>Inizia una conversazione</span>
-              <i aria-hidden="true">↗︎</i>
+              <i aria-hidden="true">↗</i>
             </a>
 
             <footer class="home-contact__footer">

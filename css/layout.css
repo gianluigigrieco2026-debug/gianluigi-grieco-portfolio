@@ -1,0 +1,109 @@
+/* =========================
+   PAGE
+========================= */
+
+.site {
+    width: 100%;
+    min-height: 100vh;
+}
+
+main {
+    width: 100%;
+}
+
+
+/* =========================
+   CONTAINERS
+========================= */
+
+.container {
+    width: min(
+        calc(100% - clamp(2rem, 6vw, 7rem)),
+        var(--container-max)
+    );
+
+    margin-inline: auto;
+}
+
+.container-content {
+    width: min(
+        calc(100% - (var(--page-padding-desktop) * 2)),
+        var(--container-content)
+    );
+
+    margin-inline: auto;
+}
+
+
+/* =========================
+   SECTIONS
+========================= */
+
+.section {
+    position: relative;
+    width: 100%;
+    padding-block: var(--space-10);
+}
+
+.section-small {
+    padding-block: var(--space-8);
+}
+
+.section-large {
+    padding-block: var(--space-11);
+}
+
+
+/* =========================
+   GRID
+========================= */
+
+.grid {
+    display: grid;
+}
+
+.grid-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-6);
+}
+
+.grid-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-6);
+}
+
+.grid-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: var(--space-6);
+}
+
+
+/* =========================
+   FULL WIDTH ELEMENTS
+========================= */
+
+.full-width {
+    width: 100%;
+}
+
+.full-viewport {
+    width: 100%;
+    min-height: 100svh;
+}
+
+
+/* =========================
+   MEDIA WRAPPER
+========================= */
+
+.media-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.media-wrapper img,
+.media-wrapper video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
