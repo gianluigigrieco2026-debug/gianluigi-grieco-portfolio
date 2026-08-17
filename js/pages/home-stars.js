@@ -24,6 +24,7 @@ function wrap(value, maximum) {
 export function initializeHomeStars() {
   const canvas = document.querySelector("[data-home-stars]");
   const homePage = document.querySelector(".home-page");
+  const portal = document.querySelector("[data-home-portal]");
   if (!canvas || !homePage) return () => {};
 
   const context = canvas.getContext("2d");
@@ -63,11 +64,20 @@ export function initializeHomeStars() {
     stars = Array.from({ length: getStarCount() }, () => createStar(width, height));
   }
 
-  function drawStar(star, time) {
+  function getPortalState(scrollPosition) {
+    if (!portal || reducedMotion) return { progress: 0, intensity: 0 };
+    const start = portal.offsetTop;
+    const distance = Math.max(portal.offsetHeight - height, 1);
+    const progress = Math.min(Math.max((scrollPosition - start) / distance, 0), 1);
+    const isInside = scrollPosition >= start && scrollPosition <= start + distance;
+    return {
+      progress,
+      intensity: isInside ? Math.pow(Math.sin(progress * Math.PI), .72) : 0
+    };
+  }
+
+  function drawStar(star, time, portalProgress = 0, portalIntensity = 0) {
     const journey = currentScroll / Math.max(height, 1);
-    const portalStart = height * .58;
-    const portalProgress = Math.min(Math.max((currentScroll - portalStart) / Math.max(height * .72, 1), 0), 1);
-    const portalIntensity = reducedMotion ? 0 : Math.sin(portalProgress * Math.PI);
     const scale = 1 + journey * (.045 + star.depth * .2) + portalIntensity * (.24 + star.depth * 1.15);
     const centerX = width / 2;
     const centerY = height / 2;
@@ -123,7 +133,8 @@ export function initializeHomeStars() {
     pointerX += (targetPointerX - pointerX) * .045;
     pointerY += (targetPointerY - pointerY) * .045;
     context.clearRect(0, 0, width, height);
-    stars.forEach((star) => drawStar(star, time));
+    const portalState = getPortalState(currentScroll);
+    stars.forEach((star) => drawStar(star, time, portalState.progress, portalState.intensity));
     frameId = window.requestAnimationFrame(render);
   }
 
@@ -143,14 +154,14 @@ export function initializeHomeStars() {
     resizeCanvas();
     if (reducedMotion) {
       context.clearRect(0, 0, width, height);
-      stars.forEach((star) => drawStar(star, 0));
+      stars.forEach((star) => drawStar(star, 0, 0, 0));
     }
   }
 
   resizeCanvas();
 
   if (reducedMotion) {
-    stars.forEach((star) => drawStar(star, 0));
+    stars.forEach((star) => drawStar(star, 0, 0, 0));
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }

@@ -4,6 +4,12 @@ import { projects } from "../data/projects.js";
 const disciplines = ["Brand identity", "Graphic design", "Fotografia"];
 const featuredProjects = projects.filter((project) => project.featured).slice(0, 8);
 
+function createTunnelRings() {
+  return Array.from({ length: 11 }, (_, index) =>
+    `<span class="home-dimension-gate__ring" data-tunnel-ring style="--ring-index:${index}"></span>`
+  ).join("");
+}
+
 function escapeHTML(value) {
   return String(value ?? "")
     .replaceAll("&", "&amp;")
@@ -42,17 +48,6 @@ export function createHomePage() {
       <div class="home-nebula" aria-hidden="true"></div>
       <div class="home-grain" aria-hidden="true"></div>
 
-      <div class="home-dimension-gate" data-dimension-gate aria-hidden="true">
-        <div class="home-dimension-gate__field"></div>
-        <div class="home-dimension-gate__ring home-dimension-gate__ring--outer"></div>
-        <div class="home-dimension-gate__ring home-dimension-gate__ring--inner"></div>
-        <div class="home-dimension-gate__core"></div>
-        <p class="home-dimension-gate__copy">
-          <span>Passaggio / 01</span>
-          <strong>Dall’idea all’identità</strong>
-        </p>
-      </div>
-
       <aside class="home-progress" aria-label="Avanzamento nella Home">
         <span data-home-progress-number>01</span>
         <i><b data-home-progress-bar></b></i>
@@ -83,9 +78,24 @@ export function createHomePage() {
             </div>
           </div>
 
-          <a class="home-scroll-cue" href="#home-about" aria-label="Scorri alla sezione successiva">
+          <a class="home-scroll-cue" href="#home-transition" aria-label="Scorri per attraversare il varco creativo">
             <span>Scorri per attraversare</span><i aria-hidden="true">↓︎</i>
           </a>
+        </section>
+
+        <section class="home-dimension-gate" id="home-transition" data-home-portal aria-label="Transizione verso la sezione Chi sono">
+          <div class="home-dimension-gate__sticky" aria-hidden="true">
+            <div class="home-dimension-gate__field"></div>
+            <div class="home-dimension-gate__rays"></div>
+            <div class="home-dimension-gate__rings">
+              ${createTunnelRings()}
+            </div>
+            <div class="home-dimension-gate__core"></div>
+            <p class="home-dimension-gate__copy">
+              <span>Varco creativo / 01</span>
+              <strong>Dove l’idea cambia dimensione.</strong>
+            </p>
+          </div>
         </section>
 
         <section class="home-section home-about container" id="home-about" data-home-section="1">

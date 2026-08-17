@@ -16,6 +16,7 @@ body[data-page="home"] .site-footer { display: none; }
   --nebula-scale: 1;
   --portal-progress: 0;
   --portal-intensity: 0;
+  --portal-copy-opacity: 0;
   position: relative;
   isolation: isolate;
   color: #f5f7fb;
@@ -24,56 +25,76 @@ body[data-page="home"] .site-footer { display: none; }
 }
 
 .home-dimension-gate {
-  position: fixed;
-  z-index: 4;
-  inset: 0;
+  position: relative;
+  z-index: 3;
+  height: 170svh;
+  pointer-events: none;
+}
+
+.home-dimension-gate__sticky {
+  position: sticky;
+  top: 0;
   display: grid;
   place-items: center;
+  width: 100%;
+  height: 100svh;
   overflow: hidden;
   opacity: var(--portal-intensity);
-  pointer-events: none;
-  mix-blend-mode: screen;
+  background: radial-gradient(circle at 50% 50%, rgba(5,8,20,.2), rgba(2,3,7,.84) 72%);
 }
 
 .home-dimension-gate__field {
   position: absolute;
-  width: min(112vw, 92rem);
+  width: min(128vmax, 110rem);
   aspect-ratio: 1;
   border-radius: 50%;
   background:
-    repeating-radial-gradient(circle, transparent 0 5.5%, rgba(255,255,255,.035) 5.7%, transparent 5.95%),
-    conic-gradient(from calc(var(--portal-progress) * 240deg), rgba(var(--blue), .32), transparent 24%, rgba(255,255,255,.08) 48%, rgba(var(--red), .3) 72%, transparent);
-  filter: blur(calc((1 - var(--portal-intensity)) * 1.2rem));
-  transform: scale(calc(.36 + var(--portal-progress) * 1.24)) rotate(calc(var(--portal-progress) * 150deg));
+    radial-gradient(circle, transparent 0 8%, rgba(var(--blue), .13) 17%, transparent 42%),
+    conic-gradient(from calc(var(--portal-progress) * 95deg), rgba(var(--blue), .19), transparent 16%, rgba(255,255,255,.055) 33%, transparent 51%, rgba(var(--red), .17) 70%, transparent 86%);
+  filter: blur(.65rem);
+  transform: scale(calc(.92 + var(--portal-intensity) * .14)) rotate(calc(var(--portal-progress) * 78deg));
+}
+
+.home-dimension-gate__rays {
+  position: absolute;
+  width: 150vmax;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  opacity: calc(var(--portal-intensity) * .48);
+  background: repeating-conic-gradient(from 4deg, transparent 0 5deg, rgba(205,220,255,.13) 5.25deg 5.45deg, transparent 5.7deg 13deg);
+  -webkit-mask-image: radial-gradient(circle, transparent 0 7%, #000 17%, #000 72%, transparent 100%);
+  mask-image: radial-gradient(circle, transparent 0 7%, #000 17%, #000 72%, transparent 100%);
+  transform: rotate(calc(var(--portal-progress) * -34deg)) scale(calc(.72 + var(--portal-progress) * .46));
+}
+
+.home-dimension-gate__rings {
+  position: absolute;
+  inset: 0;
+  perspective: 900px;
+  transform-style: preserve-3d;
 }
 
 .home-dimension-gate__ring {
   position: absolute;
-  aspect-ratio: 1;
-  border-radius: 50%;
-  transform: scale(calc(.42 + var(--portal-progress) * .9)) rotate(calc(var(--portal-progress) * -120deg));
-}
-
-.home-dimension-gate__ring--outer {
-  width: min(72vw, 46rem);
-  border: 1px solid rgba(211,224,255,.42);
-  box-shadow: 0 0 2.5rem rgba(var(--blue), .34), inset 0 0 3rem rgba(var(--red), .2);
-}
-
-.home-dimension-gate__ring--inner {
-  width: min(43vw, 27rem);
-  border: 1px solid rgba(255,255,255,.62);
-  box-shadow: 0 0 3rem rgba(255,255,255,.22);
-  transform: scale(calc(.3 + var(--portal-progress) * 1.15)) rotate(calc(var(--portal-progress) * 180deg));
+  left: 50%;
+  top: 50%;
+  width: min(58vmin, 36rem);
+  aspect-ratio: 1.24 / 1;
+  border: 1px solid rgba(218,228,255,.72);
+  border-radius: 48%;
+  opacity: var(--ring-opacity, 0);
+  box-shadow: 0 0 1.4rem rgba(var(--blue), .3), inset 0 0 1.1rem rgba(var(--red), .13);
+  transform: translate(-50%, -50%) scale(var(--ring-scale, .1)) rotate(var(--ring-rotation, 0deg));
+  will-change: transform, opacity;
 }
 
 .home-dimension-gate__core {
-  width: min(12vw, 7rem);
+  width: clamp(2.75rem, 8vmin, 5.5rem);
   aspect-ratio: 1;
   border-radius: 50%;
-  background: #fff;
-  box-shadow: 0 0 2rem #fff, 0 0 8rem rgba(var(--blue), .75), 0 0 13rem rgba(var(--red), .5);
-  transform: scale(calc(.08 + var(--portal-intensity) * .92));
+  background: radial-gradient(circle at 44% 42%, #02030a 0 38%, #081432 58%, #020307 72%);
+  box-shadow: 0 0 1.8rem rgba(159,190,255,.36), 0 0 7rem rgba(var(--blue), .48), 0 0 11rem rgba(var(--red), .24);
+  transform: scale(calc(.55 + var(--portal-intensity) * .45));
 }
 
 .home-dimension-gate__copy {
@@ -85,9 +106,10 @@ body[data-page="home"] .site-footer { display: none; }
   gap: .45rem;
   width: min(calc(100% - 3rem), 30rem);
   color: rgba(255,255,255,.72);
+  opacity: var(--portal-copy-opacity);
   text-align: center;
   text-transform: uppercase;
-  transform: translate(-50%, calc((1 - var(--portal-intensity)) * 2rem));
+  transform: translate(-50%, calc((1 - var(--portal-copy-opacity)) * 1.5rem));
 }
 
 .home-dimension-gate__copy span {
@@ -250,8 +272,6 @@ body[data-page="home"] .navbar.container {
   justify-content: space-between;
   border-color: rgba(169,190,255,.19);
   box-shadow: inset 0 1px 0 rgba(255,255,255,.14), 0 3rem 8rem rgba(0,25,90,.19);
-  scale: calc(1 - var(--portal-intensity) * .055);
-  filter: blur(calc(var(--portal-intensity) * .8px));
 }
 
 .home-hero__panel::after {
@@ -719,11 +739,11 @@ body[data-page="home"] .navbar.container {
   .home-page .container,
   body[data-page="home"] .navbar.container { width: calc(100% - 2rem); }
   .home-progress { display: none; }
-  .home-dimension-gate__field { width: 145vw; }
-  .home-dimension-gate__ring--outer { width: 88vw; }
-  .home-dimension-gate__ring--inner { width: 54vw; }
-  .home-dimension-gate__core { width: 15vw; }
-  .home-dimension-gate__copy { bottom: 5.5rem; }
+  .home-dimension-gate { height: 155svh; }
+  .home-dimension-gate__field { width: 168vmax; }
+  .home-dimension-gate__rays { width: 170vmax; }
+  .home-dimension-gate__ring { width: 68vmin; }
+  .home-dimension-gate__copy { bottom: 6rem; }
   .home-section { padding-top: 6.5rem; padding-bottom: 3.5rem; }
   .home-hero { min-height: 100svh; }
   .home-hero__coordinates { display: none; }
@@ -813,7 +833,11 @@ body[data-page="home"] .navbar.container {
   .home-hero__title i { transform: none; animation: none; }
   .home-scroll-cue i { animation: none; }
   .home-nebula { transform: none; }
-  .home-dimension-gate { display: none; }
+  .home-dimension-gate { height: 32svh; }
+  .home-dimension-gate__sticky { position: relative; height: 32svh; opacity: .45; }
+  .home-dimension-gate__rings,
+  .home-dimension-gate__rays,
+  .home-dimension-gate__copy { display: none; }
   .home-work-track { animation: none; }
   .home-work-marquee {
     overflow-x: auto;
