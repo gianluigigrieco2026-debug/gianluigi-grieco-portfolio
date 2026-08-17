@@ -6,14 +6,16 @@ const WORK_CATEGORIES = [
   "All",
   "Brand Identity",
   "Graphic Design",
-  "Photography"
+  "Photography",
+  "Shopify"
 ];
 
 const CATEGORY_LABELS = {
   All: "Tutti",
   "Brand Identity": "Brand Identity",
   "Graphic Design": "Graphic Design",
-  Photography: "Fotografia"
+  Photography: "Fotografia",
+  Shopify: "Web Design / Shopify"
 };
 
 
