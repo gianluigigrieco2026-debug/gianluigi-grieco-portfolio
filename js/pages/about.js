@@ -6,7 +6,7 @@ function createDisciplines() {
       <li class="about-discipline about-discipline--${index + 1}" data-reveal style="--reveal-delay: ${index * 90}ms">
         <div class="about-discipline__top">
           <span class="about-discipline__number">0${index + 1}</span>
-          <span class="about-discipline__mark" aria-hidden="true">↗</span>
+          <span class="about-discipline__mark" aria-hidden="true">↗︎</span>
         </div>
         <div class="about-discipline__body">
           <h3>${discipline.title}</h3>
@@ -24,7 +24,7 @@ function createProcess() {
       <li class="about-step${index === 0 ? " is-active" : ""}" data-method-step="${index}" tabindex="0">
         <div class="about-step__top">
           <span>0${index + 1}</span>
-          <span aria-hidden="true">${index === siteData.about.approach.length - 1 ? "●" : "↓"}</span>
+          <span aria-hidden="true">${index === siteData.about.approach.length - 1 ? "●" : "↓︎"}</span>
         </div>
         <div class="about-step__content">
           <h3>${step.title}</h3>
@@ -68,7 +68,7 @@ export function createAboutPage() {
           <div class="about-hero__bottom">
             <p>Brand identity · Graphic design · Fotografia</p>
             <button type="button" data-about-practice-link>
-              Esplora la pratica <span aria-hidden="true">↓</span>
+              Esplora la pratica <span aria-hidden="true">↓︎</span>
             </button>
           </div>
         </div>
@@ -110,7 +110,7 @@ export function createAboutPage() {
             <p class="about-closing__statement">Capire.<br>Ridurre.<br>Dare forma.</p>
             <a href="#contact">
               Iniziamo un progetto
-              <span aria-hidden="true">↗</span>
+              <span aria-hidden="true">↗︎</span>
             </a>
           </div>
         </div>
