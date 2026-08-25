@@ -46,8 +46,8 @@
     inset 0 1px 0 rgba(255, 255, 255, .13),
     0 2.5rem 7rem rgba(0, 0, 0, .48),
     0 0 0 1px rgba(19, 58, 186, .05);
-  backdrop-filter: blur(28px) saturate(145%);
-  -webkit-backdrop-filter: blur(28px) saturate(145%);
+  backdrop-filter: blur(48px) saturate(120%);
+  -webkit-backdrop-filter: blur(48px) saturate(120%);
   opacity: 0;
   transform: translate3d(0, -1.1rem, 0) scale(.955);
   transform-origin: top right;
@@ -349,6 +349,8 @@ body.is-menu-open { overflow: hidden; }
     max-height: calc(100svh - 6.15rem);
     padding: 1.15rem;
     border-radius: 1.2rem;
+    backdrop-filter: blur(54px) saturate(115%);
+    -webkit-backdrop-filter: blur(54px) saturate(115%);
   }
 
   .menu-overlay__header { margin-bottom: 1.35rem; }
