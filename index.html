@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="it" data-color-theme="original">
 
 <head>
     <meta charset="UTF-8">
@@ -39,6 +39,22 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Gianluigi Grieco — Graphic Designer, Fotografo e Shopify Partner">
     <meta name="twitter:description" content="Brand identity, graphic design, fotografia e creazione di siti ed e-commerce Shopify.">
+
+    <script>
+        (() => {
+            try {
+                const savedTheme = localStorage.getItem("portfolio-color-theme");
+                document.documentElement.dataset.colorTheme =
+                    savedTheme === "acid" ? "acid" : "original";
+                document.querySelector('meta[name="theme-color"]').content =
+                    savedTheme === "acid" ? "#07040d" : "#020307";
+            }
+            catch {
+                document.documentElement.dataset.colorTheme = "original";
+                document.querySelector('meta[name="theme-color"]').content = "#020307";
+            }
+        })();
+    </script>
 
     <link
         rel="stylesheet"

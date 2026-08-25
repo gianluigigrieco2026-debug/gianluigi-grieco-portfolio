@@ -25,6 +25,10 @@ import {
 } from "./components/header-visibility.js";
 
 import {
+  initializeThemeSwitcher
+} from "./components/theme-switcher.js";
+
+import {
   createMenuOverlay,
   initializeMenu
 } from "./components/menu.js";
@@ -98,6 +102,7 @@ let destroyAboutPage = null;
 let destroyScrollReveals = null;
 let destroyMenu = null;
 let destroyHeaderVisibility = null;
+let destroyThemeSwitcher = null;
 
 
 function destroyHomeEffects() {
@@ -144,6 +149,11 @@ function destroyGlobalInteractions() {
     destroyHeaderVisibility();
     destroyHeaderVisibility = null;
   }
+
+  if (destroyThemeSwitcher) {
+    destroyThemeSwitcher();
+    destroyThemeSwitcher = null;
+  }
 }
 
 
@@ -171,6 +181,7 @@ function handleRouteChange(route) {
   `);
 
   destroyMenu = initializeMenu();
+  destroyThemeSwitcher = initializeThemeSwitcher();
 
 
   /* HOME */

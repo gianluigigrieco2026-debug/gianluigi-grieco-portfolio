@@ -45,6 +45,24 @@ export function initializeHomeStars() {
   let pointerY = 0;
   let targetPointerX = 0;
   let targetPointerY = 0;
+  let starRgb = [227, 234, 247];
+
+  function updateStarPalette() {
+    const value = window.getComputedStyle(
+      document.documentElement
+    ).getPropertyValue("--theme-star-rgb");
+
+    const channels = value
+      .split(",")
+      .map((channel) => Number.parseFloat(channel.trim()))
+      .filter(Number.isFinite);
+
+    if (channels.length === 3) {
+      starRgb = channels.map((channel) => (
+        Math.min(Math.max(Math.round(channel), 0), 255)
+      ));
+    }
+  }
 
   function getStarCount() {
     if (window.innerWidth <= 600) return 105;
@@ -101,16 +119,14 @@ export function initializeHomeStars() {
       context.beginPath();
       context.moveTo(x, y);
       context.lineTo(x - (dx / distance) * streak, y - (dy / distance) * streak);
-      const redMix = Math.round(227 - flightProgress * 28);
-      const greenMix = Math.round(234 - flightProgress * 72);
-      context.strokeStyle = `rgba(${redMix}, ${greenMix}, 249, ${opacity * (.42 + flightIntensity * .36)})`;
+      context.strokeStyle = `rgba(${starRgb.join(", ")}, ${opacity * (.42 + flightIntensity * .36)})`;
       context.lineWidth = Math.max(.35, radius * .65);
       context.stroke();
     }
 
     context.beginPath();
     context.arc(x, y, radius, 0, Math.PI * 2);
-    context.fillStyle = `rgba(227, 234, 247, ${opacity})`;
+    context.fillStyle = `rgba(${starRgb.join(", ")}, ${opacity})`;
     context.fill();
 
     if (star.accent) {
@@ -119,7 +135,7 @@ export function initializeHomeStars() {
       context.lineTo(x + radius * 3.2, y);
       context.moveTo(x, y - radius * 3.2);
       context.lineTo(x, y + radius * 3.2);
-      context.strokeStyle = `rgba(240, 244, 252, ${opacity * .48})`;
+      context.strokeStyle = `rgba(${starRgb.join(", ")}, ${opacity * .48})`;
       context.lineWidth = .55;
       context.stroke();
     }
@@ -158,12 +174,26 @@ export function initializeHomeStars() {
     }
   }
 
+  function handleThemeChange() {
+    updateStarPalette();
+
+    if (reducedMotion) {
+      context.clearRect(0, 0, width, height);
+      stars.forEach((star) => drawStar(star, 0, 0, 0));
+    }
+  }
+
+  updateStarPalette();
   resizeCanvas();
+  window.addEventListener("colorthemechange", handleThemeChange);
 
   if (reducedMotion) {
     stars.forEach((star) => drawStar(star, 0, 0, 0));
     window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      window.removeEventListener("colorthemechange", handleThemeChange);
+    };
   }
 
   window.addEventListener("scroll", handleScroll, { passive: true });
@@ -176,6 +206,7 @@ export function initializeHomeStars() {
     window.removeEventListener("scroll", handleScroll);
     window.removeEventListener("resize", handleResize);
     window.removeEventListener("pointermove", handlePointerMove);
+    window.removeEventListener("colorthemechange", handleThemeChange);
     if (frameId !== null) window.cancelAnimationFrame(frameId);
   };
 }

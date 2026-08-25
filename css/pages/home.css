@@ -3,7 +3,7 @@
 ====================================== */
 
 html:has(body[data-page="home"]) { scroll-behavior: smooth; }
-body[data-page="home"] { overflow-x: hidden; background: #020307; }
+body[data-page="home"] { overflow-x: hidden; background: var(--theme-space-bg, #020307); }
 body[data-page="home"] .site-footer { display: none; }
 
 @property --home-edge-angle {
@@ -13,9 +13,9 @@ body[data-page="home"] .site-footer { display: none; }
 }
 
 .home-page {
-  --blue: 0, 76, 255;
-  --red: 255, 40, 48;
-  --yellow: 255, 196, 24;
+  --blue: var(--home-blue-rgb, 0, 76, 255);
+  --red: var(--home-red-rgb, 255, 40, 48);
+  --yellow: var(--home-yellow-rgb, 255, 196, 24);
   --home-progress: 0;
   --nebula-y: 0%;
   --nebula-shift: 0rem;
@@ -23,7 +23,7 @@ body[data-page="home"] .site-footer { display: none; }
   position: relative;
   isolation: isolate;
   color: #f5f7fb;
-  background: #020307;
+  background: var(--theme-space-bg, #020307);
   overflow: clip;
 }
 
@@ -84,7 +84,7 @@ body[data-page="home"] .navbar.container {
 .home-contact { min-height: 88svh; }
 
 .home-glass {
-  --edge-rgb: 166, 197, 255;
+  --edge-rgb: var(--palette-hero-rgb, 166, 197, 255);
   --glass-x: 0%;
   --glass-y: 0%;
   --glass-rotate-x: 0deg;
@@ -199,7 +199,7 @@ body[data-page="home"] .navbar.container {
 }
 
 .home-hero__panel {
-  --edge-rgb: 166, 197, 255;
+  --edge-rgb: var(--palette-hero-rgb, 166, 197, 255);
   min-height: min(72svh, 48rem);
   padding: clamp(1.4rem, 3vw, 3rem);
   display: flex;
