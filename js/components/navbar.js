@@ -20,7 +20,7 @@ export function createNavbar() {
         <button
           class="navbar__theme-button"
           type="button"
-          aria-label="Attiva la palette Acid Pulse"
+          aria-label="Attiva la palette Signal Shift"
           aria-pressed="false"
           data-theme-toggle
         >

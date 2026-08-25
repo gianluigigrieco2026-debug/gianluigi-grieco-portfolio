@@ -4,6 +4,17 @@ import { createArrowIcon } from "../utils/icons.js";
 
 const disciplines = ["Brand identity", "Graphic design", "Fotografia", "Shopify Partner"];
 const featuredProjects = projects.filter((project) => project.featured).slice(0, 8);
+const HOME_JOURNEY_SESSION_KEY = "portfolio-home-journey-entered";
+
+function shouldShowJourneyIntro() {
+  try {
+    if (typeof window === "undefined") return true;
+    return window.sessionStorage.getItem(HOME_JOURNEY_SESSION_KEY) !== "true";
+  }
+  catch {
+    return true;
+  }
+}
 
 function escapeHTML(value) {
   return String(value ?? "")
@@ -38,11 +49,43 @@ function createProjectSet(duplicate = false) {
 }
 
 export function createHomePage() {
+  const showJourneyIntro = shouldShowJourneyIntro();
+
   return `
-    <div class="home-page home-page--journey" data-home-journey>
+    <div class="home-page home-page--journey ${showJourneyIntro ? "is-awaiting-entry" : "is-home-entered"}" data-home-journey>
       <canvas class="home-stars" data-home-stars aria-hidden="true"></canvas>
       <div class="home-nebula" aria-hidden="true"></div>
       <div class="home-grain" aria-hidden="true"></div>
+
+      <section
+        class="home-gateway"
+        data-home-gateway
+        aria-label="Ingresso al portfolio"
+        ${showJourneyIntro ? "" : "hidden"}
+      >
+        <div class="home-gateway__topline" aria-hidden="true">
+          <span>Sessione creativa / 2026</span>
+          <span>40.4637° N &nbsp; 15.2108° E</span>
+        </div>
+
+        <div class="home-gateway__center">
+          <span class="home-gateway__signal" aria-hidden="true"></span>
+          <p>Una direzione visiva comincia da un gesto.</p>
+          <button class="home-gateway__button" type="button" data-home-enter>
+            <span class="home-gateway__button-mark" aria-hidden="true"></span>
+            <span>Attiva il viaggio</span>
+            <small>00:00:01</small>
+          </button>
+        </div>
+
+        <div class="home-gateway__fragments" aria-hidden="true">
+          <span>IDENTITÀ</span><span>IMMAGINI</span><span>DIREZIONE</span><span>TRACCIA</span>
+        </div>
+
+        <div class="home-gateway__status" aria-live="polite" data-home-gateway-status>
+          Pronto al decollo
+        </div>
+      </section>
 
       <aside class="home-progress" aria-label="Avanzamento nella Home">
         <span data-home-progress-number>01</span>
@@ -56,12 +99,13 @@ export function createHomePage() {
             <span>40.4637° N</span><span>15.2108° E</span>
           </div>
 
-          <div class="home-glass home-hero__panel" data-glass-panel>
-            <div class="home-glass__shine" aria-hidden="true"></div>
+          <div class="home-hero__stage">
             <div class="home-hero__eyebrow">
               <span>Portfolio creativo / 2026</span>
               <span>${siteData.owner.location}</span>
             </div>
+
+            <div class="home-hero__timecode" aria-hidden="true">T+00:00:01</div>
 
             <h1 class="home-hero__title" aria-label="Do forma alle idee">
               <span><i>Do forma</i></span>
@@ -72,6 +116,8 @@ export function createHomePage() {
               <p>${siteData.owner.fullName}<br>${siteData.owner.role}</p>
               <p>Identità, immagini e direzioni visive<br>pensate per lasciare una traccia.</p>
             </div>
+
+            <span class="home-hero__axis" aria-hidden="true"></span>
           </div>
 
           <a class="home-scroll-cue" href="#home-transition" aria-label="Scorri per continuare nello spazio">

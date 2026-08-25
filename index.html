@@ -44,10 +44,11 @@
         (() => {
             try {
                 const savedTheme = localStorage.getItem("portfolio-color-theme");
+                const isSignalTheme = savedTheme === "signal" || savedTheme === "acid";
                 document.documentElement.dataset.colorTheme =
-                    savedTheme === "acid" ? "acid" : "original";
+                    isSignalTheme ? "signal" : "original";
                 document.querySelector('meta[name="theme-color"]').content =
-                    savedTheme === "acid" ? "#07040d" : "#020307";
+                    isSignalTheme ? "#05070a" : "#020307";
             }
             catch {
                 document.documentElement.dataset.colorTheme = "original";

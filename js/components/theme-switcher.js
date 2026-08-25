@@ -1,11 +1,12 @@
 const STORAGE_KEY = "portfolio-color-theme";
 const ORIGINAL_THEME = "original";
-const ACID_THEME = "acid";
+const SIGNAL_THEME = "signal";
 
 function readSavedTheme() {
   try {
-    return window.localStorage.getItem(STORAGE_KEY) === ACID_THEME
-      ? ACID_THEME
+    const savedTheme = window.localStorage.getItem(STORAGE_KEY);
+    return savedTheme === SIGNAL_THEME || savedTheme === "acid"
+      ? SIGNAL_THEME
       : ORIGINAL_THEME;
   }
   catch {
@@ -30,7 +31,7 @@ function updateThemeColor(theme) {
   if (metaThemeColor) {
     metaThemeColor.setAttribute(
       "content",
-      theme === ACID_THEME ? "#07040d" : "#020307"
+      theme === SIGNAL_THEME ? "#05070a" : "#020307"
     );
   }
 }
@@ -51,26 +52,26 @@ export function initializeThemeSwitcher() {
   let transitionTimer = null;
 
   function applyTheme(theme, options = {}) {
-    const resolvedTheme = theme === ACID_THEME
-      ? ACID_THEME
+    const resolvedTheme = theme === SIGNAL_THEME || theme === "acid"
+      ? SIGNAL_THEME
       : ORIGINAL_THEME;
-    const isAcid = resolvedTheme === ACID_THEME;
+    const isSignal = resolvedTheme === SIGNAL_THEME;
 
     root.dataset.colorTheme = resolvedTheme;
-    button.setAttribute("aria-pressed", String(isAcid));
+    button.setAttribute("aria-pressed", String(isSignal));
     button.setAttribute(
       "aria-label",
-      isAcid
+      isSignal
         ? "Ripristina la palette originale"
-        : "Attiva la palette Acid Pulse"
+        : "Attiva la palette Signal Shift"
     );
-    button.title = isAcid
-      ? "Palette Acid Pulse attiva"
+    button.title = isSignal
+      ? "Palette Signal Shift attiva"
       : "Palette originale attiva";
 
     if (label) {
-      label.textContent = isAcid
-        ? "Palette Acid Pulse"
+      label.textContent = isSignal
+        ? "Palette Signal Shift"
         : "Palette originale";
     }
 
@@ -99,9 +100,9 @@ export function initializeThemeSwitcher() {
   }
 
   function handleThemeToggle() {
-    const nextTheme = root.dataset.colorTheme === ACID_THEME
+    const nextTheme = root.dataset.colorTheme === SIGNAL_THEME
       ? ORIGINAL_THEME
-      : ACID_THEME;
+      : SIGNAL_THEME;
 
     applyTheme(nextTheme, {
       persist: true,

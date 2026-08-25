@@ -8,7 +8,7 @@
   display: flex;
   justify-content: flex-end;
   align-items: flex-start;
-  padding: 6.55rem var(--page-padding-desktop) var(--page-padding-desktop);
+  padding: 5.95rem var(--page-padding-desktop) var(--page-padding-desktop);
   background:
     radial-gradient(circle at 80% 12%, rgba(var(--palette-work-rgb, 22, 71, 255), .12), transparent 32%),
     rgba(2, 3, 8, .62);
@@ -344,7 +344,7 @@ body.is-menu-open { overflow: hidden; }
 ========================= */
 
 @media (max-width: 1024px) {
-  .menu-overlay { padding: 6.25rem var(--page-padding-tablet) var(--page-padding-tablet); }
+  .menu-overlay { padding: 5.7rem var(--page-padding-tablet) var(--page-padding-tablet); }
   .menu-overlay__panel { width: min(33rem, 72vw); }
   .menu-overlay__link-label { font-size: clamp(2.2rem, 6vw, 3.2rem); }
 }
@@ -356,12 +356,12 @@ body.is-menu-open { overflow: hidden; }
 @media (max-width: 768px) {
   .menu-overlay {
     justify-content: center;
-    padding: 5.85rem var(--page-padding-mobile) var(--page-padding-mobile);
+    padding: 5.35rem var(--page-padding-mobile) var(--page-padding-mobile);
   }
 
   .menu-overlay__panel {
     width: 100%;
-    max-height: calc(100svh - 6.75rem);
+    max-height: calc(100svh - 6.15rem);
     padding: 1.15rem;
     border-radius: 1.2rem;
   }

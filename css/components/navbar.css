@@ -21,8 +21,12 @@
   background: transparent !important;
   z-index: var(--z-header);
   pointer-events: none;
-  transition: top 420ms cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: top;
+  transition:
+    top 420ms cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 360ms ease,
+    transform 420ms cubic-bezier(0.16, 1, 0.3, 1),
+    visibility 360ms step-start;
+  will-change: top, opacity, transform;
 }
 
 .site-header.is-hidden {
@@ -70,12 +74,13 @@ body.is-menu-open .site-header {
 .navbar {
   position: relative;
   isolation: isolate;
-  min-height: 4.85rem;
+  width: min(calc(100% - clamp(3rem, 8vw, 9rem)), 96rem);
+  min-height: 4.35rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  padding: .58rem .62rem .58rem .78rem;
+  padding: .5rem .55rem .5rem .7rem;
   overflow: hidden;
   border: 1px solid var(--header-border);
   border-radius: 1.55rem;
@@ -94,6 +99,10 @@ body.is-menu-open .site-header {
     background 520ms ease,
     border-color 420ms ease,
     box-shadow 520ms ease;
+}
+
+.site-header .navbar.container {
+  width: min(calc(100% - clamp(3rem, 8vw, 9rem)), 96rem);
 }
 
 .navbar::before {
@@ -136,7 +145,7 @@ body.is-menu-open .site-header {
 .navbar__logo {
   display: grid;
   place-items: center;
-  width: clamp(2.7rem, 3.4vw, 3.15rem);
+  width: clamp(2.35rem, 3vw, 2.75rem);
   aspect-ratio: 1;
   flex: 0 0 auto;
   color: currentColor;
@@ -308,15 +317,16 @@ body.is-loading .navbar__logo-mark {
     top: -6rem;
   }
 
-  .navbar {
-    min-height: 4.25rem;
+  .site-header .navbar.container {
+    width: calc(100% - 3rem);
+    min-height: 3.75rem;
     gap: .6rem;
-    padding: .45rem .48rem .45rem .58rem;
-    border-radius: 1.3rem;
+    padding: .35rem .4rem .35rem .5rem;
+    border-radius: 1.15rem;
   }
 
   .navbar__logo {
-    width: 2.55rem;
+    width: 2.15rem;
   }
 
   .navbar__actions {
@@ -324,8 +334,8 @@ body.is-loading .navbar__logo-mark {
   }
 
   .navbar__theme-button {
-    width: 2.45rem;
-    height: 2.45rem;
+    width: 2.25rem;
+    height: 2.25rem;
   }
 
   .navbar__theme-icon {
@@ -334,9 +344,9 @@ body.is-loading .navbar__logo-mark {
   }
 
   .navbar__menu-button {
-    min-height: 2.45rem;
-    padding: .58rem .7rem .58rem .82rem;
-    font-size: .68rem;
+    min-height: 2.25rem;
+    padding: .5rem .64rem .5rem .75rem;
+    font-size: .64rem;
   }
 }
 
@@ -346,7 +356,7 @@ body.is-loading .navbar__logo-mark {
   }
 
   .navbar__menu-button {
-    width: 2.45rem;
+    width: 2.25rem;
     justify-content: center;
     padding: 0;
   }

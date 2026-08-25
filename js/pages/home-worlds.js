@@ -2,6 +2,11 @@ export function initializeHomeWorlds() {
   const page = document.querySelector("[data-home-journey]");
   if (!page) return () => {};
 
+  const journeySessionKey = "portfolio-home-journey-entered";
+  const gateway = page.querySelector("[data-home-gateway]");
+  const enterButton = page.querySelector("[data-home-enter]");
+  const gatewayStatus = page.querySelector("[data-home-gateway-status]");
+  const journeyContent = page.querySelector(".home-journey");
   const panels = [...page.querySelectorAll("[data-glass-panel]")];
   const sections = [...page.querySelectorAll("[data-home-section]")];
   const progressBar = page.querySelector("[data-home-progress-bar]");
@@ -10,6 +15,52 @@ export function initializeHomeWorlds() {
 
   let frame = null;
   let activeSection = 0;
+  let journeyTimer = null;
+
+  const isGatewayOpen = Boolean(gateway && !gateway.hidden);
+  document.body.classList.toggle("is-home-gateway-open", isGatewayOpen);
+  if (isGatewayOpen && journeyContent) {
+    journeyContent.inert = true;
+    journeyContent.setAttribute("aria-hidden", "true");
+  }
+
+  function completeJourney() {
+    try {
+      window.sessionStorage.setItem(journeySessionKey, "true");
+    }
+    catch {
+      // The intro still works when browser storage is unavailable.
+    }
+
+    if (gateway) {
+      gateway.hidden = true;
+      gateway.classList.remove("is-launching");
+    }
+
+    page.classList.remove("is-awaiting-entry", "is-travelling");
+    page.classList.add("is-home-entered");
+    if (journeyContent) {
+      journeyContent.inert = false;
+      journeyContent.removeAttribute("aria-hidden");
+    }
+    document.body.classList.remove("is-home-gateway-open");
+    window.dispatchEvent(new CustomEvent("homejourneycomplete"));
+  }
+
+  function startJourney() {
+    if (!gateway || gateway.classList.contains("is-launching")) return;
+
+    gateway.classList.add("is-launching");
+    page.classList.add("is-travelling");
+    enterButton?.setAttribute("disabled", "");
+    if (gatewayStatus) gatewayStatus.textContent = "Coordinate temporali agganciate";
+    window.dispatchEvent(new CustomEvent("homejourneystart"));
+
+    journeyTimer = window.setTimeout(
+      completeJourney,
+      reducedMotion ? 320 : 1450
+    );
+  }
 
   const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
@@ -79,6 +130,7 @@ export function initializeHomeWorlds() {
 
   window.addEventListener("scroll", requestScrollUpdate, { passive: true });
   window.addEventListener("resize", requestScrollUpdate);
+  enterButton?.addEventListener("click", startJourney);
   updateScroll();
 
   return () => {
@@ -86,6 +138,13 @@ export function initializeHomeWorlds() {
     sectionObserver.disconnect();
     window.removeEventListener("scroll", requestScrollUpdate);
     window.removeEventListener("resize", requestScrollUpdate);
+    enterButton?.removeEventListener("click", startJourney);
+    window.clearTimeout(journeyTimer);
+    document.body.classList.remove("is-home-gateway-open");
+    if (journeyContent) {
+      journeyContent.inert = false;
+      journeyContent.removeAttribute("aria-hidden");
+    }
     pointerHandlers.forEach(({ panel, handleMove, handleLeave }) => {
       panel.removeEventListener("pointermove", handleMove);
       panel.removeEventListener("pointerleave", handleLeave);
