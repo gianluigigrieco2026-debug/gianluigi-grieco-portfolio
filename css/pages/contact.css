@@ -46,16 +46,6 @@ body[data-page="contact"] .navbar__menu-button {
 .contact-availability {
   display: inline-flex;
   align-items: center;
-  gap: 0.6rem;
-}
-
-.contact-availability span {
-  width: 0.45rem;
-  height: 0.45rem;
-  flex: 0 0 auto;
-  border-radius: 50%;
-  background: #d89242;
-  box-shadow: 0 0 0 0.3rem rgba(216, 146, 66, 0.09);
 }
 
 .contact-hero__main {

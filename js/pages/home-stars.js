@@ -46,7 +46,6 @@ export function initializeHomeStars() {
   let targetPointerX = 0;
   let targetPointerY = 0;
   let starRgb = [227, 234, 247];
-  let journeyStartTime = null;
 
   function updateStarPalette() {
     const value = window.getComputedStyle(
@@ -93,13 +92,6 @@ export function initializeHomeStars() {
       progress,
       intensity: isInside ? Math.pow(Math.sin(progress * Math.PI), .58) : 0
     };
-  }
-
-  function getJourneyIntensity(time) {
-    if (journeyStartTime === null || reducedMotion) return 0;
-    const progress = Math.min(Math.max((time - journeyStartTime) / 1500, 0), 1);
-    if (progress >= 1) journeyStartTime = null;
-    return Math.pow(Math.sin(progress * Math.PI), .42);
   }
 
   function drawStar(star, time, flightProgress = 0, flightIntensity = 0) {
@@ -158,9 +150,7 @@ export function initializeHomeStars() {
     pointerY += (targetPointerY - pointerY) * .045;
     context.clearRect(0, 0, width, height);
     const flightState = getFlightState(currentScroll);
-    const journeyIntensity = getJourneyIntensity(time);
-    const starFlightIntensity = Math.max(flightState.intensity, journeyIntensity);
-    stars.forEach((star) => drawStar(star, time, flightState.progress, starFlightIntensity));
+    stars.forEach((star) => drawStar(star, time, flightState.progress, flightState.intensity));
     frameId = window.requestAnimationFrame(render);
   }
 
@@ -193,10 +183,6 @@ export function initializeHomeStars() {
     }
   }
 
-  function handleJourneyStart() {
-    journeyStartTime = performance.now();
-  }
-
   updateStarPalette();
   resizeCanvas();
   window.addEventListener("colorthemechange", handleThemeChange);
@@ -213,7 +199,6 @@ export function initializeHomeStars() {
   window.addEventListener("scroll", handleScroll, { passive: true });
   window.addEventListener("resize", handleResize);
   window.addEventListener("pointermove", handlePointerMove, { passive: true });
-  window.addEventListener("homejourneystart", handleJourneyStart);
   frameId = window.requestAnimationFrame(render);
 
   return () => {
@@ -222,7 +207,6 @@ export function initializeHomeStars() {
     window.removeEventListener("resize", handleResize);
     window.removeEventListener("pointermove", handlePointerMove);
     window.removeEventListener("colorthemechange", handleThemeChange);
-    window.removeEventListener("homejourneystart", handleJourneyStart);
     if (frameId !== null) window.cancelAnimationFrame(frameId);
   };
 }

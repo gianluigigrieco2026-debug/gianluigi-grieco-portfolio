@@ -57,7 +57,6 @@ export function createContactPage() {
             <p>Contatti / 03</p>
 
             <p class="contact-availability">
-              <span aria-hidden="true"></span>
               ${siteData.contact.availability}
             </p>
           </div>

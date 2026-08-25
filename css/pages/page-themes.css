@@ -380,13 +380,6 @@ body[data-page="contact"] {
     var(--theme-contact-bg);
 }
 
-.contact-availability span {
-  background: var(--palette-contact);
-  box-shadow:
-    0 0 0 .3rem rgba(var(--palette-contact-rgb), .12),
-    0 0 1.4rem rgba(var(--palette-contact-rgb), .32);
-}
-
 .contact-hero__title em,
 .contact-conversation__eyebrow,
 .contact-meta__social span {

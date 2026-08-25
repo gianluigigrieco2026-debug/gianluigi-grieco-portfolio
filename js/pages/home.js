@@ -4,17 +4,6 @@ import { createArrowIcon } from "../utils/icons.js";
 
 const disciplines = ["Brand identity", "Graphic design", "Shopify Partner"];
 const featuredProjects = projects.filter((project) => project.featured).slice(0, 8);
-const HOME_JOURNEY_SESSION_KEY = "portfolio-home-journey-entered";
-
-function shouldShowJourneyIntro() {
-  try {
-    if (typeof window === "undefined") return true;
-    return window.sessionStorage.getItem(HOME_JOURNEY_SESSION_KEY) !== "true";
-  }
-  catch {
-    return true;
-  }
-}
 
 function escapeHTML(value) {
   return String(value ?? "")
@@ -49,26 +38,11 @@ function createProjectSet(duplicate = false) {
 }
 
 export function createHomePage() {
-  const showJourneyIntro = shouldShowJourneyIntro();
-
   return `
-    <div class="home-page home-page--journey ${showJourneyIntro ? "is-awaiting-entry" : "is-home-entered"}" data-home-journey>
+    <div class="home-page home-page--journey" data-home-journey>
       <canvas class="home-stars" data-home-stars aria-hidden="true"></canvas>
       <div class="home-nebula" aria-hidden="true"></div>
       <div class="home-grain" aria-hidden="true"></div>
-
-      <section
-        class="home-gateway"
-        data-home-gateway
-        aria-label="Ingresso al portfolio"
-        ${showJourneyIntro ? "" : "hidden"}
-      >
-        <div class="home-gateway__center">
-          <button class="home-gateway__button" type="button" data-home-enter>
-            <span>Attiva il viaggio</span>
-          </button>
-        </div>
-      </section>
 
       <aside class="home-progress" aria-label="Avanzamento nella Home">
         <span data-home-progress-number>01</span>
@@ -104,7 +78,6 @@ export function createHomePage() {
 
             <div class="home-hero__footer">
               <p><strong>${siteData.owner.fullName}</strong><span>${siteData.owner.role}</span></p>
-              <span class="home-hero__frequency" aria-hidden="true"><i></i></span>
               <p><strong>${siteData.owner.location}</strong><span>Disponibile per nuovi progetti</span></p>
             </div>
           </div>
@@ -119,7 +92,7 @@ export function createHomePage() {
             <div class="home-glass__shine" aria-hidden="true"></div>
 
             <header class="home-section__header">
-              <p><span class="home-dot home-dot--red"></span> 02 / Chi sono</p>
+              <p>02 / Chi sono</p>
               <p>Creativo indipendente / Italia</p>
             </header>
 
@@ -142,7 +115,7 @@ export function createHomePage() {
             <div class="home-glass__shine" aria-hidden="true"></div>
 
             <header class="home-section__header">
-              <p><span class="home-dot home-dot--blue"></span> 03 / Lavori</p>
+              <p>03 / Lavori</p>
               <p>Progetti selezionati / 2026</p>
             </header>
 
@@ -167,7 +140,7 @@ export function createHomePage() {
             <div class="home-glass__shine" aria-hidden="true"></div>
 
             <header class="home-section__header">
-              <p><span class="home-dot home-dot--yellow"></span> 04 / Contatti</p>
+              <p>04 / Contatti</p>
               <p>${siteData.contact.availability}</p>
             </header>
 

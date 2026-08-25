@@ -120,16 +120,6 @@
 .menu-overlay__eyebrow {
   display: inline-flex;
   align-items: center;
-  gap: .6rem;
-}
-
-.menu-overlay__status-dot {
-  width: .38rem;
-  height: .38rem;
-  border-radius: 50%;
-  background: var(--palette-work, #315dff);
-  box-shadow: 0 0 1rem rgba(var(--palette-work-rgb, 49, 93, 255), .95);
-  animation: menu-status 2.1s ease-in-out infinite;
 }
 
 /* =========================
@@ -334,11 +324,6 @@ body.is-menu-open { overflow: hidden; }
   to { transform: translate3d(-3rem, 2.4rem, 0) scale(1.1) rotate(14deg); }
 }
 
-@keyframes menu-status {
-  0%, 100% { opacity: .55; transform: scale(.8); }
-  50% { opacity: 1; transform: scale(1.12); }
-}
-
 /* =========================
    TABLET
 ========================= */
@@ -385,7 +370,6 @@ body.is-menu-open { overflow: hidden; }
   .menu-overlay__link,
   .menu-overlay__link::before,
   .menu-overlay__link-arrow { transition-duration: .01ms; }
-  .menu-overlay__panel::before,
-  .menu-overlay__status-dot { animation: none; }
+  .menu-overlay__panel::before { animation: none; }
   .is-menu-open .menu-overlay__link { transition-delay: 0ms; }
 }

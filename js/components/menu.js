@@ -151,7 +151,6 @@ export function createMenuOverlay(activePage = "home") {
 
         <div class="menu-overlay__header">
           <p class="menu-overlay__eyebrow">
-            <span class="menu-overlay__status-dot" aria-hidden="true"></span>
             Navigazione
           </p>
 

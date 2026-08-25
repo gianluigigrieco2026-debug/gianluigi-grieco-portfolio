@@ -25,7 +25,7 @@ function createProcess() {
       <li class="about-step${index === 0 ? " is-active" : ""}" data-method-step="${index}" tabindex="0">
         <div class="about-step__top">
           <span>0${index + 1}</span>
-          <span aria-hidden="true">${index === siteData.about.approach.length - 1 ? "●" : createArrowIcon("south")}</span>
+          <span aria-hidden="true">${index === siteData.about.approach.length - 1 ? "" : createArrowIcon("south")}</span>
         </div>
         <div class="about-step__content">
           <h3>${step.title}</h3>
