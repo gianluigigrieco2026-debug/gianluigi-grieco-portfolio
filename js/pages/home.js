@@ -77,38 +77,42 @@ export function createHomePage() {
       </aside>
 
       <main class="home-journey">
-        <section class="home-section home-hero container" data-home-section="0">
-          <div class="home-hero__coordinates" aria-hidden="true">
-            <span>40.4637° N</span><span>15.2108° E</span>
+        <section class="home-section home-hero container" data-home-section="0" data-home-hero>
+          <div class="home-hero__visual" aria-hidden="true">
+            <span class="home-hero__light home-hero__light--blue"></span>
+            <span class="home-hero__light home-hero__light--red"></span>
+            <span class="home-hero__light home-hero__light--white"></span>
+            <span class="home-hero__mesh"></span>
           </div>
 
           <div class="home-hero__stage">
             <div class="home-hero__eyebrow">
-              <span>Portfolio creativo / 2026</span>
-              <span>${siteData.owner.location}</span>
+              <span>01 / Portfolio creativo</span>
+              <span>Direzione visiva / 2026</span>
             </div>
 
-            <div class="home-hero__timecode" aria-hidden="true">T+00:00:01</div>
+            <div class="home-hero__composition">
+              <h1 class="home-hero__title" aria-label="Do forma alle idee">
+                <span><i>Do forma</i></span>
+                <span><i>alle idee.</i></span>
+              </h1>
 
-            <h1 class="home-hero__title" aria-label="Do forma alle idee">
-              <span><i>Do forma</i></span>
-              <span><i>alle idee.</i></span>
-            </h1>
+              <p class="home-hero__statement">
+                Identità, immagini e direzioni visive pensate per lasciare una traccia.
+              </p>
+            </div>
 
             <div class="home-hero__footer">
-              <p>${siteData.owner.fullName}<br>${siteData.owner.role}</p>
-              <p>Identità, immagini e direzioni visive<br>pensate per lasciare una traccia.</p>
+              <p><strong>${siteData.owner.fullName}</strong><span>${siteData.owner.role}</span></p>
+              <span class="home-hero__frequency" aria-hidden="true"><i></i></span>
+              <p><strong>${siteData.owner.location}</strong><span>Disponibile per nuovi progetti</span></p>
             </div>
-
-            <span class="home-hero__axis" aria-hidden="true"></span>
           </div>
 
-          <a class="home-scroll-cue" href="#home-transition" aria-label="Scorri per continuare nello spazio">
-            <span>Scorri nello spazio</span><i aria-hidden="true">${createArrowIcon("south")}</i>
+          <a class="home-scroll-cue" href="#home-about" aria-label="Scorri verso la sezione Chi sono">
+            <span>Esplora il portfolio</span><i aria-hidden="true">${createArrowIcon("south")}</i>
           </a>
         </section>
-
-        <section class="home-space-flight" id="home-transition" data-home-flight aria-hidden="true"></section>
 
         <section class="home-section home-about container" id="home-about" data-home-section="1">
           <div class="home-glass home-about__panel" data-glass-panel>

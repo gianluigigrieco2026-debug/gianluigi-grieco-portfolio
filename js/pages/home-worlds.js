@@ -6,6 +6,7 @@ export function initializeHomeWorlds() {
   const gateway = page.querySelector("[data-home-gateway]");
   const enterButton = page.querySelector("[data-home-enter]");
   const journeyContent = page.querySelector(".home-journey");
+  const hero = page.querySelector("[data-home-hero]");
   const panels = [...page.querySelectorAll("[data-glass-panel]")];
   const sections = [...page.querySelectorAll("[data-home-section]")];
   const progressBar = page.querySelector("[data-home-progress-bar]");
@@ -126,9 +127,26 @@ export function initializeHomeWorlds() {
     return { panel, handleMove, handleLeave };
   });
 
+  function handleHeroPointer(event) {
+    if (!hero || reducedMotion || window.innerWidth < 720) return;
+    const bounds = hero.getBoundingClientRect();
+    const x = (event.clientX - bounds.left) / Math.max(bounds.width, 1) - .5;
+    const y = (event.clientY - bounds.top) / Math.max(bounds.height, 1) - .5;
+    hero.style.setProperty("--hero-light-x", `${x * 2.4}rem`);
+    hero.style.setProperty("--hero-light-y", `${y * 1.6}rem`);
+  }
+
+  function resetHeroPointer() {
+    if (!hero) return;
+    hero.style.setProperty("--hero-light-x", "0rem");
+    hero.style.setProperty("--hero-light-y", "0rem");
+  }
+
   window.addEventListener("scroll", requestScrollUpdate, { passive: true });
   window.addEventListener("resize", requestScrollUpdate);
   enterButton?.addEventListener("click", startJourney);
+  hero?.addEventListener("pointermove", handleHeroPointer, { passive: true });
+  hero?.addEventListener("pointerleave", resetHeroPointer);
   updateScroll();
 
   return () => {
@@ -137,6 +155,8 @@ export function initializeHomeWorlds() {
     window.removeEventListener("scroll", requestScrollUpdate);
     window.removeEventListener("resize", requestScrollUpdate);
     enterButton?.removeEventListener("click", startJourney);
+    hero?.removeEventListener("pointermove", handleHeroPointer);
+    hero?.removeEventListener("pointerleave", resetHeroPointer);
     window.clearTimeout(journeyTimer);
     document.body.classList.remove("is-home-gateway-open");
     if (journeyContent) {
