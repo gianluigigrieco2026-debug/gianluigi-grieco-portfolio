@@ -5,7 +5,6 @@ export function initializeHomeWorlds() {
   const journeySessionKey = "portfolio-home-journey-entered";
   const gateway = page.querySelector("[data-home-gateway]");
   const enterButton = page.querySelector("[data-home-enter]");
-  const gatewayStatus = page.querySelector("[data-home-gateway-status]");
   const journeyContent = page.querySelector(".home-journey");
   const panels = [...page.querySelectorAll("[data-glass-panel]")];
   const sections = [...page.querySelectorAll("[data-home-section]")];
@@ -53,7 +52,6 @@ export function initializeHomeWorlds() {
     gateway.classList.add("is-launching");
     page.classList.add("is-travelling");
     enterButton?.setAttribute("disabled", "");
-    if (gatewayStatus) gatewayStatus.textContent = "Coordinate temporali agganciate";
     window.dispatchEvent(new CustomEvent("homejourneystart"));
 
     journeyTimer = window.setTimeout(

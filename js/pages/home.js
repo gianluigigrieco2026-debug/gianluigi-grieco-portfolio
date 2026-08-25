@@ -63,27 +63,10 @@ export function createHomePage() {
         aria-label="Ingresso al portfolio"
         ${showJourneyIntro ? "" : "hidden"}
       >
-        <div class="home-gateway__topline" aria-hidden="true">
-          <span>Sessione creativa / 2026</span>
-          <span>40.4637° N &nbsp; 15.2108° E</span>
-        </div>
-
         <div class="home-gateway__center">
-          <span class="home-gateway__signal" aria-hidden="true"></span>
-          <p>Una direzione visiva comincia da un gesto.</p>
           <button class="home-gateway__button" type="button" data-home-enter>
-            <span class="home-gateway__button-mark" aria-hidden="true"></span>
             <span>Attiva il viaggio</span>
-            <small>00:00:01</small>
           </button>
-        </div>
-
-        <div class="home-gateway__fragments" aria-hidden="true">
-          <span>IDENTITÀ</span><span>IMMAGINI</span><span>DIREZIONE</span><span>TRACCIA</span>
-        </div>
-
-        <div class="home-gateway__status" aria-live="polite" data-home-gateway-status>
-          Pronto al decollo
         </div>
       </section>
 

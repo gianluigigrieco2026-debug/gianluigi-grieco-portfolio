@@ -74,7 +74,7 @@ body.is-menu-open .site-header {
 .navbar {
   position: relative;
   isolation: isolate;
-  width: min(calc(100% - clamp(3rem, 8vw, 9rem)), 96rem);
+  width: min(calc(100% - clamp(2rem, 6vw, 7rem)), 112rem);
   min-height: 4.35rem;
   display: flex;
   align-items: center;
@@ -102,7 +102,7 @@ body.is-menu-open .site-header {
 }
 
 .site-header .navbar.container {
-  width: min(calc(100% - clamp(3rem, 8vw, 9rem)), 96rem);
+  width: min(calc(100% - clamp(2rem, 6vw, 7rem)), 112rem);
 }
 
 .navbar::before {
@@ -318,7 +318,7 @@ body.is-loading .navbar__logo-mark {
   }
 
   .site-header .navbar.container {
-    width: calc(100% - 3rem);
+    width: calc(100% - 2rem);
     min-height: 3.75rem;
     gap: .6rem;
     padding: .35rem .4rem .35rem .5rem;
