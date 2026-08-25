@@ -2,7 +2,7 @@ import { siteData } from "../data/site.js";
 import { projects } from "../data/projects.js";
 import { createArrowIcon } from "../utils/icons.js";
 
-const disciplines = ["Brand identity", "Graphic design", "Fotografia", "Shopify Partner"];
+const disciplines = ["Brand identity", "Graphic design", "Shopify Partner"];
 const featuredProjects = projects.filter((project) => project.featured).slice(0, 8);
 const HOME_JOURNEY_SESSION_KEY = "portfolio-home-journey-entered";
 
@@ -126,7 +126,7 @@ export function createHomePage() {
             <div class="home-about__content">
               <h2>Do forma a ciò<br>che ti <em>distingue.</em></h2>
               <div class="home-about__copy">
-                <p>Sono Gianluigi Grieco. Unisco strategia, grafica e fotografia per trasformare un’idea in un’identità riconoscibile.</p>
+                <p>Sono Gianluigi Grieco. Unisco strategia, graphic design e progettazione digitale per trasformare un’idea in un’identità riconoscibile.</p>
                 <div class="home-about__disciplines" aria-label="Le mie discipline">
                   ${disciplines.map((item, index) => `<span><i>0${index + 1}</i>${item}</span>`).join("")}
                 </div>
@@ -148,7 +148,7 @@ export function createHomePage() {
 
             <div class="home-work__intro">
               <h2>Progetti in<br><em>movimento.</em></h2>
-              <p>Identità, poster e fotografia. Una selezione di lavori reali da esplorare.</p>
+              <p>Identità, poster e progetti digitali. Una selezione di lavori reali da esplorare.</p>
             </div>
 
             <div class="home-work-marquee" aria-label="Selezione di progetti">

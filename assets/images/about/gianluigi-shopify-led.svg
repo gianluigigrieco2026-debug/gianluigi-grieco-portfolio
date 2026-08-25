@@ -12,7 +12,7 @@
         }
 
         .led-line--services {
-            animation-delay: 1.05s;
+            display: none;
         }
 
         @keyframes led-switch-on {

@@ -49,50 +49,6 @@ export const projects = [
   },
 
   {
-    id: 2,
-    slug: "foto-trapriot",
-    title: "Trapriot — Serie notturna",
-    category: "Photography",
-    year: "2026",
-    client: "Trapriot",
-    services: [
-      "Art direction",
-      "Fotografia fashion",
-      "Color grading"
-    ],
-    featured: true,
-    thumbnail: "assets/images/projects/photography/foto-trapriot/cover.webp",
-    cover: "assets/images/projects/photography/foto-trapriot/cover.webp",
-    coverRatio: "square",
-    gallery: [
-      "assets/images/projects/photography/foto-trapriot/01.webp",
-      "assets/images/projects/photography/foto-trapriot/02.webp",
-      "assets/images/projects/photography/foto-trapriot/03.webp",
-      "assets/images/projects/photography/foto-trapriot/04.webp",
-      "assets/images/projects/photography/foto-trapriot/05.webp",
-      "assets/images/projects/photography/foto-trapriot/06.webp",
-      "assets/images/projects/photography/foto-trapriot/07.webp",
-      "assets/images/projects/photography/foto-trapriot/08.webp",
-      "assets/images/projects/photography/foto-trapriot/09.webp",
-      "assets/images/projects/photography/foto-trapriot/10.webp",
-      "assets/images/projects/photography/foto-trapriot/11.webp",
-      "assets/images/projects/photography/foto-trapriot/12.webp",
-      "assets/images/projects/photography/foto-trapriot/13.webp",
-      "assets/images/projects/photography/foto-trapriot/14.webp",
-      "assets/images/projects/photography/foto-trapriot/15.webp",
-      "assets/images/projects/photography/foto-trapriot/16.webp",
-      "assets/images/projects/photography/foto-trapriot/17.webp",
-      "assets/images/projects/photography/foto-trapriot/18.webp",
-      "assets/images/projects/photography/foto-trapriot/19.webp",
-      "assets/images/projects/photography/foto-trapriot/20.webp"
-    ],
-    description: {
-      short: "Una serie fashion notturna costruita con flash diretto, ombre profonde e inquadrature urbane dal carattere crudo.",
-      full: "Una serie fotografica del brand Trapriot"
-    }
-  },
-
-  {
     id: 3,
     slug: "rosticceria-da-antony",
     title: "Rosticceria da Antony",
@@ -168,7 +124,7 @@ export const projects = [
     ],
     description: {
       short: "Copertina musicale dal carattere urban, caratterizzata da luci intense, texture analogiche e una tipografia d’impatto.",
-      full: "Copertina musicale realizzata per il brano “Messi Freestyle”. Il progetto combina fotografia, tipografia d’impatto e texture analogiche per costruire un’estetica urbana, intensa e contemporanea. Le tonalità blu, le luci da palcoscenico e l’effetto grana rafforzano l’atmosfera notturna, mentre la composizione mette l’artista al centro della scena, comunicandone energia, sicurezza e personalità."
+      full: "Copertina musicale realizzata per il brano “Messi Freestyle”. Il progetto combina immagine, tipografia d’impatto e texture analogiche per costruire un’estetica urbana, intensa e contemporanea. Le tonalità blu, le luci da palcoscenico e l’effetto grana rafforzano l’atmosfera notturna, mentre la composizione mette l’artista al centro della scena, comunicandone energia, sicurezza e personalità."
     }
   },
 
@@ -219,7 +175,7 @@ export const projects = [
     ],
     description: {
       short: "Tra polvere, tramonto e musica: un sistema grafico che trasforma il Circolo Rickymarty in un saloon del deserto, con tipografia distressed e silhouette iconica a raccontare l'energia di una notte senza regole.",
-      full: ` Il brief chiedeva di costruire un'identità visiva per una serata estiva con una narrazione forte: portare l'atmosfera del Far West nel contesto di un circolo del Cilento. Rodeo è la locandina che traduce questa tensione in immagine. Il punto di partenza è una silhouette iconica — cavallo e cavaliere contro la luce del tramonto — che diventa subito il cuore emotivo del pezzo. La fotografia, immersa in una palette di ocra, arancio bruciato e terra scura, evoca il calore del deserto e l'attesa della notte. Sopra, il titolo RODEO è trattato con una tipografia western slab-serif, volutamente distressed e consumata, come se fosse stata stampata su un manifesto d'epoca e lasciata al sole per giorni. Il sistema informativo gioca su un contrasto tra l'epica del titolo e la chiarezza dei dettagli: opening set, host e DJ set, data e location sono disposti in modo asimmetrico lungo il lato sinistro, lasciando l'immagine respirare e guidando lo sguardo dall'alto verso il basso come in una discesa verso l'arena. Una texture granulosa uniforme unisce tutti gli elementi in un unico strato materiale, a metà tra il manifesto vintage e la stampa contemporanea. Il risultato è un invito che non dice semplicemente "vieni a ballare", ma promette un'esperienza: quella di una notte in cui il circolo diventa un ranch, il DJ set diventa una festa sotto le stelle e ogni ospite è un cowboy in transito.` 
+      full: ` Il brief chiedeva di costruire un'identità visiva per una serata estiva con una narrazione forte: portare l'atmosfera del Far West nel contesto di un circolo del Cilento. Rodeo è la locandina che traduce questa tensione in immagine. Il punto di partenza è una silhouette iconica — cavallo e cavaliere contro la luce del tramonto — che diventa subito il cuore emotivo del pezzo. L'immagine principale, immersa in una palette di ocra, arancio bruciato e terra scura, evoca il calore del deserto e l'attesa della notte. Sopra, il titolo RODEO è trattato con una tipografia western slab-serif, volutamente distressed e consumata, come se fosse stata stampata su un manifesto d'epoca e lasciata al sole per giorni. Il sistema informativo gioca su un contrasto tra l'epica del titolo e la chiarezza dei dettagli: opening set, host e DJ set, data e location sono disposti in modo asimmetrico lungo il lato sinistro, lasciando l'immagine respirare e guidando lo sguardo dall'alto verso il basso come in una discesa verso l'arena. Una texture granulosa uniforme unisce tutti gli elementi in un unico strato materiale, a metà tra il manifesto vintage e la stampa contemporanea. Il risultato è un invito che non dice semplicemente "vieni a ballare", ma promette un'esperienza: quella di una notte in cui il circolo diventa un ranch, il DJ set diventa una festa sotto le stelle e ogni ospite è un cowboy in transito.`
     }
   },
 
@@ -288,8 +244,8 @@ export const projects = [
       "assets/images/projects/graphic-design/summer-escape/cover.webp"
     ],
     description: {
-      short: "Un'esplosione di colore che traduce il tramonto in energia visiva: gradienti accesi, forme organiche e una fotografia immersiva si fondono in un invito irresistibile a liberare la mente.",
-      full:   "Summer Escape Art direction e comunicazione evento / Aurora Beach Club, 18 giugno 2026. Il brief era semplice: creare un'identità visiva che sapesse trasmettere calore, libertà e voglia di evasione. Summer Escape è la locandina per un evento estivo in un beach club, pensata per catturare l'attenzione nello scroll di una calda sera di giugno. Il design si costruisce attorno a un gradiente audace che attraversa tutta la gamma del tramonto tropicale: dal magenta elettrico al blu cielo, fino all'arancio e al rosso fuoco. Al centro, una fotografia immersiva di una festa in piscina al crepuscolo è incastonata in una forma organica a petalo, che la isola dal caos cromatico e la trasforma in una finestra invitante. In alto, elementi grafici ondulati richiamano il movimento delle onde e della musica, mentre la tipografia gioca su un contrasto tra un serif monumentale per il titolo e un sans-serif pulito per le informazioni pratiche. La gerarchia visiva guida lo spettatore dall'impatto emotivo del titolo ai dettagli operativi — orario, location, guest DJ e l'irrinunciabile free drink — senza mai perdere il ritmo. Il risultato è un pezzo di comunicazione che non annuncia solo un evento, ma vende un'atmosfera: quella di una serata che inizia con il tramonto e finisce sotto le stelle."
+      short: "Un'esplosione di colore che traduce il tramonto in energia visiva: gradienti accesi, forme organiche e un'immagine immersiva si fondono in un invito irresistibile a liberare la mente.",
+      full:   "Summer Escape Art direction e comunicazione evento / Aurora Beach Club, 18 giugno 2026. Il brief era semplice: creare un'identità visiva che sapesse trasmettere calore, libertà e voglia di evasione. Summer Escape è la locandina per un evento estivo in un beach club, pensata per catturare l'attenzione nello scroll di una calda sera di giugno. Il design si costruisce attorno a un gradiente audace che attraversa tutta la gamma del tramonto tropicale: dal magenta elettrico al blu cielo, fino all'arancio e al rosso fuoco. Al centro, un'immagine immersiva di una festa in piscina al crepuscolo è incastonata in una forma organica a petalo, che la isola dal caos cromatico e la trasforma in una finestra invitante. In alto, elementi grafici ondulati richiamano il movimento delle onde e della musica, mentre la tipografia gioca su un contrasto tra un serif monumentale per il titolo e un sans-serif pulito per le informazioni pratiche. La gerarchia visiva guida lo spettatore dall'impatto emotivo del titolo ai dettagli operativi — orario, location, guest DJ e l'irrinunciabile free drink — senza mai perdere il ritmo. Il risultato è un pezzo di comunicazione che non annuncia solo un evento, ma vende un'atmosfera: quella di una serata che inizia con il tramonto e finisce sotto le stelle."
   }
     }
 

@@ -325,9 +325,9 @@
 
 .about-disciplines {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: clamp(1rem, 1.7vw, 1.75rem);
-  max-width: 90rem;
+  max-width: 100rem;
   margin-inline: auto;
   margin-top: clamp(3rem, 6vw, 6rem);
   border: 0;
@@ -338,7 +338,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  min-height: clamp(21rem, 31vw, 34rem);
+  min-height: clamp(20rem, 26vw, 29rem);
   padding: clamp(1.35rem, 2.4vw, 2.5rem);
   overflow: hidden;
   border: 1px solid rgba(255,255,255,.14);
@@ -381,15 +381,13 @@
 .about-discipline:hover .about-discipline__body p { color: rgba(23,16,33,.62); }
 .about-discipline:hover .about-discipline__mark { color: #171021; transform: rotate(45deg); }
 .about-discipline:hover .about-discipline__glow { opacity: .7; transform: scale(1.35); }
-.about-discipline--2,
-.about-discipline--4 { margin-top: clamp(2rem, 5vw, 5rem); }
+.about-discipline--2 { margin-top: clamp(2rem, 5vw, 5rem); }
 
 @media (max-width: 900px) {
   .about-disciplines { grid-template-columns: 1fr; max-width: 50rem; margin-inline: auto; }
   .about-discipline { min-height: 20rem; }
   .about-discipline--2,
-  .about-discipline--3,
-  .about-discipline--4 { margin-top: 0; }
+  .about-discipline--3 { margin-top: 0; }
 }
 
 @media (max-width: 680px) {

@@ -4,7 +4,6 @@ import { createArrowIcon } from "../utils/icons.js";
 const CATEGORY_LABELS = {
   "Brand Identity": "Brand Identity",
   "Graphic Design": "Graphic Design",
-  Photography: "Fotografia",
   Shopify: "Web Design / Shopify"
 };
 

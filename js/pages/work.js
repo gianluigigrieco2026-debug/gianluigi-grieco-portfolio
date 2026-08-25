@@ -6,7 +6,6 @@ const WORK_CATEGORIES = [
   "All",
   "Brand Identity",
   "Graphic Design",
-  "Photography",
   "Shopify"
 ];
 
@@ -14,7 +13,6 @@ const CATEGORY_LABELS = {
   All: "Tutti",
   "Brand Identity": "Brand Identity",
   "Graphic Design": "Graphic Design",
-  Photography: "Fotografia",
   Shopify: "Web Design / Shopify"
 };
 
@@ -125,7 +123,7 @@ export function createWorkPage(routeParameter = null) {
 
           <div class="work-hero__bottom">
             <p class="work-hero__intro">
-              Una selezione curata di identità, sistemi grafici e progetti fotografici sviluppati attraverso concept, direzione e immagine.
+              Una selezione curata di identità, sistemi grafici e progetti Shopify sviluppati attraverso concept, direzione e immagine.
             </p>
 
             <p class="work-hero__count">

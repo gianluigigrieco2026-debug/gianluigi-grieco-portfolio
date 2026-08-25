@@ -259,11 +259,6 @@ body[data-page="work"] {
   margin-top: 0;
 }
 
-.work-grid[data-visible-count="1"]
-.project-card[data-project-category="Photography"]:not([hidden]) {
-  max-width: 22rem;
-}
-
 .work-grid[data-visible-count="2"]
 .project-card:not([hidden]):nth-of-type(odd) {
   grid-column: auto;
