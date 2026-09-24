@@ -1,13 +1,13 @@
 .site-loader {
   position: fixed; inset: 0; z-index: 10000; display: grid; place-items: center;
   color: #f5f5f2; background: #050505; opacity: 1; visibility: visible;
-  transition: opacity 560ms var(--ease-primary), visibility 0s linear 560ms;
+  transition: opacity 420ms var(--ease-primary), visibility 0s linear 420ms;
 }
 .site-loader::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(circle at center, rgba(255,255,255,.028), transparent 38%); }
-.site-loader__signature { position: relative; z-index: 1; width: clamp(15rem, 33vw, 28rem); aspect-ratio: 1; opacity: 0; animation: loader-signature-enter 180ms ease 120ms forwards; }
-.site-loader__signature-reveal { position: absolute; inset: 0; overflow: hidden; clip-path: inset(0 100% 0 0); animation: loader-write 1900ms cubic-bezier(.42, 0, .18, 1) 300ms forwards; }
+.site-loader__signature { position: relative; z-index: 1; width: clamp(15rem, 33vw, 28rem); aspect-ratio: 1; opacity: 0; animation: loader-signature-enter 140ms ease 60ms forwards; }
+.site-loader__signature-reveal { position: absolute; inset: 0; overflow: hidden; clip-path: inset(0 100% 0 0); animation: loader-write 820ms cubic-bezier(.42, 0, .18, 1) 160ms forwards; }
 .site-loader__signature img { display: block; width: 100%; height: 100%; object-fit: contain; }
-.site-loader__copyright { position: absolute; left: 50%; bottom: clamp(2.2rem, 5vw, 4rem); z-index: 1; color: #5e5e5e; font-size: .64rem; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; opacity: 0; transform: translate3d(-50%, .4rem, 0); animation: loader-copyright-in 420ms ease 1750ms forwards; }
+.site-loader__copyright { position: absolute; left: 50%; bottom: clamp(2.2rem, 5vw, 4rem); z-index: 1; color: #5e5e5e; font-size: .64rem; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; opacity: 0; transform: translate3d(-50%, .4rem, 0); animation: loader-copyright-in 260ms ease 760ms forwards; }
 body.is-loading { overflow: hidden; }
 body.is-loaded .site-loader { opacity: 0; visibility: hidden; pointer-events: none; }
 body.is-loaded .site-loader__signature { opacity: 0; transform: translateY(-.4rem); transition: opacity 260ms ease, transform 420ms var(--ease-primary); }

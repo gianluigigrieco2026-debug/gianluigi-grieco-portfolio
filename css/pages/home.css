@@ -385,6 +385,10 @@ body[data-page="home"] .site-footer { display: none; }
   font-size: .58rem;
   letter-spacing: .13em;
   text-transform: uppercase;
+  border: 0;
+  background: transparent;
+  font-family: inherit;
+  cursor: pointer;
   transform: translateX(-50%);
 }
 .home-scroll-cue i { color: rgb(var(--blue)); font-style: normal; animation: home-cue 1.8s ease-in-out infinite; }

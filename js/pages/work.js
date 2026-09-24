@@ -1,25 +1,17 @@
 import { projects } from "../data/projects.js";
+import {
+  ALL_PROJECTS_CATEGORY,
+  getAvailableWorkCategories,
+  getCategoryLabel
+} from "../data/categories.js";
 import { createProjectCard } from "../components/project-card.js";
 
-
-const WORK_CATEGORIES = [
-  "All",
-  "Brand Identity",
-  "Graphic Design",
-  "Shopify"
-];
-
-const CATEGORY_LABELS = {
-  All: "Tutti",
-  "Brand Identity": "Brand Identity",
-  "Graphic Design": "Graphic Design",
-  Shopify: "Web Design / Shopify"
-};
+const WORK_CATEGORIES = getAvailableWorkCategories(projects);
 
 
 function decodeRouteParameter(parameter) {
   if (!parameter) {
-    return "All";
+    return ALL_PROJECTS_CATEGORY;
   }
 
   try {
@@ -36,7 +28,7 @@ function normalizeCategory(parameter) {
 
   return WORK_CATEGORIES.includes(decodedCategory)
     ? decodedCategory
-    : "All";
+    : ALL_PROJECTS_CATEGORY;
 }
 
 
@@ -44,7 +36,7 @@ function createFilterMarkup(activeCategory) {
   return WORK_CATEGORIES
     .map(category => {
       const isActive = category === activeCategory;
-      const count = category === "All"
+      const count = category === ALL_PROJECTS_CATEGORY
         ? projects.length
         : projects.filter(
             project => project.category === category
@@ -57,7 +49,7 @@ function createFilterMarkup(activeCategory) {
           data-work-filter="${category}"
           aria-pressed="${String(isActive)}"
         >
-          <span>${CATEGORY_LABELS[category] || category}</span>
+          <span>${getCategoryLabel(category)}</span>
           <span class="work-filter__count">
             ${String(count).padStart(2, "0")}
           </span>
@@ -72,7 +64,7 @@ function createProjectMarkup(activeCategory) {
   return projects
     .map((project, index) => {
       const isVisible =
-        activeCategory === "All" ||
+        activeCategory === ALL_PROJECTS_CATEGORY ||
         project.category === activeCategory;
 
       return createProjectCard(
@@ -90,7 +82,7 @@ export function createWorkPage(routeParameter = null) {
     routeParameter
   );
 
-  const initialVisibleCount = activeCategory === "All"
+  const initialVisibleCount = activeCategory === ALL_PROJECTS_CATEGORY
     ? projects.length
     : projects.filter(
         project => project.category === activeCategory
@@ -123,7 +115,7 @@ export function createWorkPage(routeParameter = null) {
 
           <div class="work-hero__bottom">
             <p class="work-hero__intro">
-              Una selezione curata di identità, sistemi grafici e progetti Shopify sviluppati attraverso concept, direzione e immagine.
+              Una selezione curata di identità, sistemi grafici e progetti visivi sviluppati attraverso concept, direzione e immagine.
             </p>
 
             <p class="work-hero__count">
@@ -215,10 +207,10 @@ export function initializeWorkPage() {
   );
 
   let activeCategory =
-    page.dataset.initialFilter || "All";
+    page.dataset.initialFilter || ALL_PROJECTS_CATEGORY;
 
   function updateURL(category) {
-    const nextHash = category === "All"
+    const nextHash = category === ALL_PROJECTS_CATEGORY
       ? "#work"
       : `#work/${encodeURIComponent(category)}`;
 
@@ -272,7 +264,7 @@ export function initializeWorkPage() {
 
     cards.forEach(card => {
       const isVisible =
-        category === "All" ||
+        category === ALL_PROJECTS_CATEGORY ||
         card.dataset.projectCategory === category;
 
       card.hidden = !isVisible;

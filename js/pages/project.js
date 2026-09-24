@@ -1,15 +1,6 @@
 import { projects } from "../data/projects.js";
+import { getCategoryLabel } from "../data/categories.js";
 import { createArrowIcon } from "../utils/icons.js";
-
-const CATEGORY_LABELS = {
-  "Brand Identity": "Brand Identity",
-  "Graphic Design": "Graphic Design",
-  Shopify: "Web Design / Shopify"
-};
-
-function getCategoryLabel(category) {
-  return CATEGORY_LABELS[category] || category;
-}
 
 
 function escapeHTML(value) {

@@ -3,7 +3,7 @@ export const siteData = {
     name: "Gianluigi",
     surname: "Grieco",
     fullName: "Gianluigi Grieco",
-    role: "Graphic Designer e Shopify Partner",
+    role: "Graphic Designer & Web Designer",
     location: "Italia"
   },
 
@@ -42,14 +42,14 @@ export const siteData = {
   services: [
     "Brand Identity",
     "Graphic Design",
-    "Siti ed e-commerce Shopify"
+    "Web Design"
   ],
 
   about: {
     eyebrow: "Creativo indipendente / Italia",
     title: "Do forma alle idee.",
     intro:
-      "Sono Gianluigi Grieco, graphic designer e Shopify Partner. Progetto identità visive, sistemi grafici ed esperienze e-commerce capaci di farsi ricordare.",
+      "Sono Gianluigi Grieco, graphic designer e web designer. Progetto identità visive, sistemi grafici ed esperienze digitali chiare, riconoscibili e costruite intorno agli obiettivi del progetto.",
     statement:
       "Il mio lavoro unisce strategia e ricerca visiva per creare progetti chiari, riconoscibili e pensati per durare.",
     disciplines: [
@@ -68,11 +68,11 @@ export const siteData = {
         scope: "Poster · Campagne · Editoriale · Contenuti social"
       },
       {
-        title: "Shopify",
-        headline: "Trasformare un’identità in un’esperienza di vendita.",
+        title: "Web Design",
+        headline: "Trasformare un’identità in un’esperienza digitale.",
         description:
-          "Progetto e realizzo siti ed e-commerce Shopify coerenti con il brand, semplici da navigare e costruiti per accompagnare la crescita del progetto.",
-        scope: "UX/UI · Setup store · Sviluppo tema · Ottimizzazione"
+          "Progetto siti web coerenti con il brand, semplici da navigare, responsive e costruiti intorno agli obiettivi del progetto.",
+        scope: "UX/UI · Web Design · Responsive · Sviluppo"
       }
     ],
     approach: [

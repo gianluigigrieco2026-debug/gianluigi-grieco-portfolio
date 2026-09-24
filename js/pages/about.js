@@ -37,6 +37,10 @@ function createProcess() {
 }
 
 export function createAboutPage() {
+  const disciplineNames = siteData.about.disciplines
+    .map(({ title }) => title)
+    .join(" · ");
+
   return `
     <div class="about-page">
       <section class="about-hero" aria-labelledby="about-title">
@@ -56,7 +60,7 @@ export function createAboutPage() {
 
             <figure class="about-portrait">
               <div class="about-portrait__image">
-                <img src="assets/images/about/gianluigi-shopify-led.svg" alt="Gianluigi Grieco — Graphic Designer e Shopify Partner" draggable="false">
+                <img src="assets/images/about/gianluigi-web-design-led.svg" alt="Gianluigi Grieco — Graphic Designer & Web Designer" draggable="false">
                 <span aria-hidden="true"></span>
               </div>
               <figcaption>
@@ -66,7 +70,7 @@ export function createAboutPage() {
           </div>
 
           <div class="about-hero__bottom">
-            <p>Brand identity · Graphic design · Shopify</p>
+            <p>${disciplineNames}</p>
             <button type="button" data-about-practice-link>
               Esplora la pratica <span aria-hidden="true">${createArrowIcon("south")}</span>
             </button>

@@ -38,7 +38,8 @@ import {
 } from "./components/footer.js";
 
 import {
-  createHomePage
+  createHomePage,
+  initializeHomePage
 } from "./pages/home.js";
 
 import {
@@ -96,6 +97,7 @@ function createTemporaryPage(title) {
 
 let destroyHomeStars = null;
 let destroyHomeWorlds = null;
+let destroyHomePage = null;
 let destroyWorkPage = null;
 let destroyProjectPage = null;
 let destroyAboutPage = null;
@@ -106,6 +108,11 @@ let destroyThemeSwitcher = null;
 
 
 function destroyHomeEffects() {
+  if (destroyHomePage) {
+    destroyHomePage();
+    destroyHomePage = null;
+  }
+
   if (destroyHomeStars) {
     destroyHomeStars();
     destroyHomeStars = null;
@@ -194,6 +201,9 @@ function handleRouteChange(route) {
     renderFooter("");
 
     requestAnimationFrame(() => {
+      destroyHomePage =
+        initializeHomePage();
+
       destroyHomeStars =
         initializeHomeStars();
 
@@ -300,7 +310,7 @@ function handleRouteChange(route) {
     initializeScrollReveals();
 
   const pageTitles = {
-    home: "Gianluigi Grieco — Graphic Designer e Shopify Partner",
+    home: "Gianluigi Grieco — Graphic Designer & Web Designer",
     work: "Lavori — Gianluigi Grieco",
     about: "Chi sono — Gianluigi Grieco",
     contact: "Contatti — Gianluigi Grieco",
@@ -335,6 +345,8 @@ function handleRouteChange(route) {
 function initializeApp() {
   const loader = document.querySelector("#siteLoader");
   const loaderStartedAt = performance.now();
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const minimumDuration = reduceMotion ? 300 : 1200;
 
   document.body.classList.add("is-loading");
 
@@ -344,7 +356,7 @@ function initializeApp() {
 
   const finishLoading = () => {
     const elapsed = performance.now() - loaderStartedAt;
-    const remaining = Math.max(0, 2650 - elapsed);
+    const remaining = Math.max(0, minimumDuration - elapsed);
 
     window.setTimeout(() => {
       document.body.classList.remove("is-loading");
@@ -352,16 +364,13 @@ function initializeApp() {
 
       window.setTimeout(() => {
         loader?.remove();
-      }, 650);
+      }, reduceMotion ? 200 : 460);
     }, remaining);
   };
 
-  if (document.readyState === "complete") {
-    finishLoading();
-  }
-  else {
-    window.addEventListener("load", finishLoading, { once: true });
-  }
+  requestAnimationFrame(() => {
+    requestAnimationFrame(finishLoading);
+  });
 }
 
 

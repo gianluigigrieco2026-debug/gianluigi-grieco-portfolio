@@ -2,7 +2,7 @@ import { siteData } from "../data/site.js";
 import { projects } from "../data/projects.js";
 import { createArrowIcon } from "../utils/icons.js";
 
-const disciplines = ["Brand identity", "Graphic design", "Shopify Partner"];
+const disciplines = siteData.about.disciplines.map(({ title }) => title);
 const featuredProjects = projects.filter((project) => project.featured).slice(0, 8);
 
 function escapeHTML(value) {
@@ -72,7 +72,7 @@ export function createHomePage() {
               </h1>
 
               <p class="home-hero__statement">
-                Identità, immagini e direzioni visive pensate per lasciare una traccia.
+                Identità, sistemi grafici ed esperienze digitali pensate per lasciare una traccia.
               </p>
             </div>
 
@@ -82,9 +82,9 @@ export function createHomePage() {
             </div>
           </div>
 
-          <a class="home-scroll-cue" href="#home-about" aria-label="Scorri verso la sezione Chi sono">
+          <button class="home-scroll-cue" type="button" data-home-about-link aria-label="Scorri verso la sezione Chi sono">
             <span>Esplora il portfolio</span><i aria-hidden="true">${createArrowIcon("south")}</i>
-          </a>
+          </button>
         </section>
 
         <section class="home-section home-about container" id="home-about" data-home-section="1">
@@ -99,7 +99,7 @@ export function createHomePage() {
             <div class="home-about__content">
               <h2>Do forma a ciò<br>che ti <em>distingue.</em></h2>
               <div class="home-about__copy">
-                <p>Sono Gianluigi Grieco. Unisco strategia, graphic design e progettazione digitale per trasformare un’idea in un’identità riconoscibile.</p>
+                <p>Sono Gianluigi Grieco. Unisco strategia, graphic design e web design per trasformare un’idea in un sistema visivo riconoscibile.</p>
                 <div class="home-about__disciplines" aria-label="Le mie discipline">
                   ${disciplines.map((item, index) => `<span><i>0${index + 1}</i>${item}</span>`).join("")}
                 </div>
@@ -121,7 +121,7 @@ export function createHomePage() {
 
             <div class="home-work__intro">
               <h2>Progetti in<br><em>movimento.</em></h2>
-              <p>Identità, poster e progetti digitali. Una selezione di lavori reali da esplorare.</p>
+              <p>Una selezione di progetti da esplorare.</p>
             </div>
 
             <div class="home-work-marquee" aria-label="Selezione di progetti">
@@ -162,4 +162,24 @@ export function createHomePage() {
         </section>
       </main>
     </div>`;
+}
+
+export function initializeHomePage() {
+  const link = document.querySelector("[data-home-about-link]");
+  const aboutSection = document.querySelector("#home-about");
+
+  if (!link || !aboutSection) return () => {};
+
+  const handleClick = () => {
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    aboutSection.scrollIntoView({
+      behavior: reduceMotion ? "auto" : "smooth",
+      block: "start"
+    });
+  };
+
+  link.addEventListener("click", handleClick);
+
+  return () => link.removeEventListener("click", handleClick);
 }

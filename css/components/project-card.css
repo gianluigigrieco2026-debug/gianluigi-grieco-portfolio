@@ -34,7 +34,7 @@
 .project-card__media,
 .project-card[data-project-category="Graphic Design"]
 .project-card__media,
-.project-card[data-project-category="Shopify"]
+.project-card[data-project-category="Web Design"]
 .project-card__media {
   aspect-ratio: 4 / 3;
   max-height: 24rem;
@@ -167,7 +167,7 @@
   .project-card__media,
   .project-card[data-project-category="Graphic Design"]
   .project-card__media,
-  .project-card[data-project-category="Shopify"]
+  .project-card[data-project-category="Web Design"]
   .project-card__media {
     aspect-ratio: 4 / 3;
     max-height: none;
