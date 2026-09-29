@@ -102,9 +102,9 @@ export const siteData = {
   contact: {
     email: "gianluigigrieco7@gmail.com",
     availability: "Disponibile per progetti selezionati",
-    whatsappDisplay: "+39 333 7889874",
+    whatsappDisplay: "+39 333 897 8169",
     whatsappUrl:
-      "https://wa.me/393337889874?text=Ciao%20Gianluigi%2C%20ho%20visto%20il%20tuo%20portfolio%20e%20vorrei%20parlarti%20di%20un%20progetto."
+      "https://wa.me/393338978169?text=Ciao%20Gianluigi%2C%20ho%20visto%20il%20tuo%20portfolio%20e%20vorrei%20parlarti%20di%20un%20progetto."
   },
 
   copyright: `© ${new Date().getFullYear()} Gianluigi Grieco`
