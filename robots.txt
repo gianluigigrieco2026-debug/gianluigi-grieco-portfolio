@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://gianluigigrieco2026-debug.github.io/gianluigi-grieco-portfolio/sitemap.xml
