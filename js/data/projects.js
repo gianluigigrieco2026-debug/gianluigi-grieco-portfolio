@@ -247,6 +247,33 @@ export const projects = [
       short: "Un'esplosione di colore che traduce il tramonto in energia visiva: gradienti accesi, forme organiche e un'immagine immersiva si fondono in un invito irresistibile a liberare la mente.",
       full:   "Summer Escape Art direction e comunicazione evento / Aurora Beach Club, 18 giugno 2026. Il brief era semplice: creare un'identità visiva che sapesse trasmettere calore, libertà e voglia di evasione. Summer Escape è la locandina per un evento estivo in un beach club, pensata per catturare l'attenzione nello scroll di una calda sera di giugno. Il design si costruisce attorno a un gradiente audace che attraversa tutta la gamma del tramonto tropicale: dal magenta elettrico al blu cielo, fino all'arancio e al rosso fuoco. Al centro, un'immagine immersiva di una festa in piscina al crepuscolo è incastonata in una forma organica a petalo, che la isola dal caos cromatico e la trasforma in una finestra invitante. In alto, elementi grafici ondulati richiamano il movimento delle onde e della musica, mentre la tipografia gioca su un contrasto tra un serif monumentale per il titolo e un sans-serif pulito per le informazioni pratiche. La gerarchia visiva guida lo spettatore dall'impatto emotivo del titolo ai dettagli operativi — orario, location, guest DJ e l'irrinunciabile free drink — senza mai perdere il ritmo. Il risultato è un pezzo di comunicazione che non annuncia solo un evento, ma vende un'atmosfera: quella di una serata che inizia con il tramonto e finisce sotto le stelle."
   }
+    },
+
+        {
+  id: 10,
+    slug: "rumore-01",
+    title: "Rumore 01",
+    category: "Graphic Design",
+    year: "2026",
+    client: "Progetto indipendente",
+    services: [
+      "Art direction",
+      "Poster design",
+      "Visual Identity"
+    ],
+    featured: true,
+    thumbnail: "assets/images/projects/graphic-design/rumore-01/cover.webp",
+    cover: "assets/images/projects/graphic-design/rumore-01/cover.webp",
+    coverRatio: "portrait",
+    gallery: [
+      "assets/images/projects/graphic-design/rumore-01/cover.webp",
+      "assets/images/projects/graphic-design/rumore-01/01.webp",
+      "assets/images/projects/graphic-design/rumore-01/02.webp"
+    ],
+    description: {
+      short: "Un'identità visiva sperimentale costruita attorno a rumore, frequenza e distorsione, dove tipografia, colore e texture trasformano il suono in immagine.",
+      full:   "RUMORE 01 è un progetto personale di identità visiva per una rassegna indipendente dedicata all’incontro tra musica e cultura visiva. Il concept nasce dall’idea di tradurre graficamente il rumore attraverso frequenze, distorsioni e contaminazioni. La texture diventa l’elemento centrale della composizione: una superficie in continuo movimento che richiama onde sonore, interferenze e vibrazioni. La palette combina rosa, blu e bianco per creare un contrasto acceso e contemporaneo, mentre la tipografia alterna un sans-serif deciso per i contenuti principali a un carattere monospaziato per informazioni e microtesti. La composizione segue una griglia modulare che organizza titolo, data, luogo e informazioni senza togliere spazio all’elemento visivo principale. Il risultato è un sistema grafico diretto e sperimentale, pensato per dare forma al suono e costruire un’identità riconoscibile attraverso ritmo, contrasto e movimento."
+  }
     }
 
     ];
